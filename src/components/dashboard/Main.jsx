@@ -2,15 +2,15 @@ import Card from "./Card";
 import "./main.css";
 import "./card.css";
 import OffCanvasOptions from "../sidebar/OffCanvasOptions";
-
 import { BsTruck, BsCart2 } from "react-icons/bs";
 import { FiDollarSign, FiUsers } from "react-icons/fi";
+import CalendarCard from "./CalendarCard";
 
 function Main() {
   return (
     <div className="content">
-      <OffCanvasOptions />
-      <h1>Analytics Dashboard</h1>
+      {/* <OffCanvasOptions /> */}
+      {/* <h1>Analytics Dashboard</h1> */}
       <div className="sales-visitors-container">
         <div className="sales-container">
           <Card
@@ -48,8 +48,13 @@ function Main() {
         </div>
       </div>
       <div className="chart-card">
-      <h5 className="card-title">Recent Movement</h5>
+        <h5 className="card-title">Recent Movement</h5>
+        <img src="Chart.png" alt="" />
+      </div>
 
+      <div className="calendar-card">
+        <h5 className="card-title">Calendar</h5>
+        <CalendarCard />
       </div>
     </div>
   );
