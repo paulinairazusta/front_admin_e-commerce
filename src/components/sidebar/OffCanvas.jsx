@@ -73,7 +73,7 @@ function OffCanvas({ name, ...props }) {
               </Link>
             </li>
           </ul>
-          <span className="/list">Admin tools</span>
+          <span className="list">Admin tools</span>
           <ul className="list">
             <li>
               <Link to="/products" className="link">
@@ -87,7 +87,7 @@ function OffCanvas({ name, ...props }) {
               </Link>
             </li>
             <li>
-              <Link to="orders" className="link">
+              <Link to="/orders" className="link">
                 <RiBillLine /> Orders
               </Link>
             </li>
