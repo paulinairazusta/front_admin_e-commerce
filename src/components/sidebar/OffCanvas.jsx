@@ -92,8 +92,8 @@ function OffCanvas({ name, ...props }) {
               </Link>
             </li>
             <li>
-              <Link to="/users" className="link">
-                <HiUsers /> Users
+              <Link to="/clients" className="link">
+                <HiUsers /> Clients
               </Link>
             </li>
             <li>
