@@ -2,6 +2,7 @@ import { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { FiLogIn } from "react-icons/fi";
 import { BiUserPlus, BiCategoryAlt } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
@@ -13,14 +14,25 @@ import "./offcanvas.css";
 
 function OffCanvas({ name, ...props }) {
   const [show, setShow] = useState(true);
+  const [hide, setHide] = useState(true);
 
-  const handleClose = () => setShow(false);
-  const toggleShow = () => setShow((s) => !s);
+  const handleClose = () => {
+    setShow(false);
+  };
+  const toggleShow = () => {
+    setShow((s) => !s);
+    setHide(!hide);
+  };
+
+  // function FollowFunctional() {
+  //   const [follow, setFollow] = React.useState(true)
+  //   return <h2 onClick={()=> setFollow(!follow)}>{follow ? "Follow" : "Unfollow"}</h2>
+  // }
 
   return (
     <>
       <Button variant="primary" onClick={toggleShow} className="me-2">
-        {name}
+        {hide ? <AiOutlineArrowLeft /> : <AiOutlineArrowRight />}
       </Button>
 
       <Offcanvas
