@@ -3,9 +3,12 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
-import { BiUserPlus } from "react-icons/bi";
+import { BiUserPlus, BiCategoryAlt } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
 import { GoSettings } from "react-icons/go";
+import { GiCakeSlice } from "react-icons/gi";
+import { HiUsers } from "react-icons/hi";
+import { RiBillLine } from "react-icons/ri";
 import "./offcanvas.css";
 
 function OffCanvas({ name, ...props }) {
@@ -55,6 +58,30 @@ function OffCanvas({ name, ...props }) {
             <li>
               <Link to="register" className="link">
                 <BiUserPlus /> Sign Up
+              </Link>
+            </li>
+          </ul>
+          <span className="list">Admin tools</span>
+          <ul className="list">
+            <li>
+              <Link to="users" className="link">
+                <HiUsers /> Users
+              </Link>
+            </li>
+            <li>
+              <Link to="products" className="link">
+                <GiCakeSlice /> Products
+              </Link>
+            </li>
+
+            <li>
+              <Link to="categories" className="link">
+                <BiCategoryAlt /> Categories
+              </Link>
+            </li>
+            <li>
+              <Link to="orders" className="link">
+                <RiBillLine /> Orders
               </Link>
             </li>
           </ul>
