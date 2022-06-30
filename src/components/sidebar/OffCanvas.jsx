@@ -31,7 +31,7 @@ function OffCanvas({ name, ...props }) {
 
   return (
     <>
-      <Button variant="primary" onClick={toggleShow} className="me-2">
+      <Button variant="light" onClick={toggleShow} className="me-2">
         {hide ? <AiOutlineArrowLeft /> : <AiOutlineArrowRight />}
       </Button>
 
