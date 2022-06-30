@@ -6,12 +6,21 @@ import OffCanvasOptions from "./components/sidebar/OffCanvasOptions";
 // import options from "./components/sidebar/options";
 import Login from "./components/login/Login";
 import options from "./components/sidebar/options";
+import Main from "./components/main/Main";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<OffCanvasOptions />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Main /> 
+              <OffCanvasOptions />
+            </>
+          }
+        />
         {/* <Route path="profile" element={<></>} /> */}
         <Route
           path="login"
