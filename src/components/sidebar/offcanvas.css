@@ -1,0 +1,35 @@
+.side-menu {
+  background-color: #222e3c;
+}
+
+.offcanvas-title {
+  color: white;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+li {
+  margin: 1rem 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin-left: 1em;
+  color: rgb(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(255, 255, 255, 0.6);
+  font-size: 16px;
+}
+
+.link:hover {
+  color: white;
+}
+
+.offcanvas {
+  width: 16rem !important;
+}
