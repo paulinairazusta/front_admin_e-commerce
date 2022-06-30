@@ -10,8 +10,8 @@ const Card = ({ title, icon, amount, percentage }) => {
       </div>
       <h1 className="amount">{amount}</h1>
       <div className="spans">
-        <span className="percentage">{percentage}%</span>
-        <span>Since last week</span>
+        <span className="percentage">{percentage }%</span>
+        <span className="since">Since last week</span>
       </div>
     </div>
   );

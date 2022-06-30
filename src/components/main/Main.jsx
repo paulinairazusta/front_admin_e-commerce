@@ -2,25 +2,48 @@ import Card from "./Card";
 import "./main.css";
 import OffCanvasOptions from "../sidebar/OffCanvasOptions";
 
+import { BsTruck, BsCart2 } from "react-icons/bs";
+import { FiDollarSign, FiUsers } from "react-icons/fi";
+
 function Main() {
   return (
     <div className="content">
-      <OffCanvasOptions />
-      {/* <h1>Analytics Dashboard</h1> */}
+      {/* <OffCanvasOptions />
+      <h1>Analytics Dashboard</h1> */}
       <div className="sales-visitors-container">
         <div className="sales-container">
-          <Card title="Sales" icon="" amount="2.382" percentage="-3.65" />
+          <Card
+            title="Sales"
+            icon={<BsTruck />}
+            amount="2.382"
+            percentage="-3.65"
+          />
         </div>
         <div className="visitors-container">
-          <Card title="Visitors" icon="" amount="14.212" percentage="5.25" />
+          <Card
+            title="Visitors"
+            icon={<FiUsers />}
+            amount="14.212"
+            percentage="5.25"
+          />
         </div>
       </div>
       <div className="earnings-orders-container">
         <div className="earnings-container">
-          <Card title="Earnings" icon="" amount="$21.300" percentage="6.65" />
+          <Card
+            title="Earnings"
+            icon={<FiDollarSign />}
+            amount="$21.300"
+            percentage="6.65"
+          />
         </div>
         <div className="orders-container">
-          <Card title="Orders" icon={""} amount={"64"} percentage="-2.25" />
+          <Card
+            title="Orders"
+            icon={<BsCart2 />}
+            amount={"64"}
+            percentage="-2.25"
+          />
         </div>
       </div>
     </div>
