@@ -20,7 +20,15 @@ function App() {
           }
         />
         {/* <Route path="profile" element={<></>} /> */}
-        <Route path="login" element={<Login />} />
+        <Route
+          path="login"
+          element={
+            <>
+              <OffCanvas />
+              <Login />
+            </>
+          }
+        />
         {/* <Route path="register" element={<></>} /> */}
       </Routes>
     </div>
