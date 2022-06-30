@@ -19,7 +19,6 @@ function App() {
           element={
             <>
               <Main />
-              <OffCanvasOptions />
             </>
           }
         />
