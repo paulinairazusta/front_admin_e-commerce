@@ -9,7 +9,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { GoSettings } from "react-icons/go";
 import { GiCakeSlice } from "react-icons/gi";
 import { HiUsers } from "react-icons/hi";
-import { RiBillLine } from "react-icons/ri";
+import { RiBillLine, RiAdminLine } from "react-icons/ri";
 import "./offcanvas.css";
 
 function OffCanvas({ name, ...props }) {
@@ -57,43 +57,48 @@ function OffCanvas({ name, ...props }) {
               </Link>
             </li>
             <li>
-              <Link to="profile" className="link">
+              <Link to="/profile" className="link">
                 <AiOutlineUser /> Profile
               </Link>
             </li>
 
             <li>
-              <Link to="login" className="link">
+              <Link to="/login" className="link">
                 <FiLogIn /> Sign In
               </Link>
             </li>
             <li>
-              <Link to="register" className="link">
+              <Link to="/register" className="link">
                 <BiUserPlus /> Sign Up
               </Link>
             </li>
           </ul>
-          <span className="list">Admin tools</span>
+          <span className="/list">Admin tools</span>
           <ul className="list">
             <li>
-              <Link to="users" className="link">
-                <HiUsers /> Users
-              </Link>
-            </li>
-            <li>
-              <Link to="products" className="link">
+              <Link to="/products" className="link">
                 <GiCakeSlice /> Products
               </Link>
             </li>
 
             <li>
-              <Link to="categories" className="link">
+              <Link to="/categories" className="link">
                 <BiCategoryAlt /> Categories
               </Link>
             </li>
             <li>
               <Link to="orders" className="link">
                 <RiBillLine /> Orders
+              </Link>
+            </li>
+            <li>
+              <Link to="/users" className="link">
+                <HiUsers /> Users
+              </Link>
+            </li>
+            <li>
+              <Link to="/admins" className="link">
+                <RiAdminLine /> Admins
               </Link>
             </li>
           </ul>
