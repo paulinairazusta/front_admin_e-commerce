@@ -1,9 +1,11 @@
 import Card from "./Card";
 import "./main.css";
+import OffCanvasOptions from "../sidebar/OffCanvasOptions";
 
 function Main() {
   return (
     <div className="content">
+      <OffCanvasOptions />
       <h1>Analytics Dashboard</h1>
       <div className="sales-visitors-container">
         <div className="sales-container">
