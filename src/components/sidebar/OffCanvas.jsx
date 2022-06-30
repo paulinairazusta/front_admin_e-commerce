@@ -9,7 +9,7 @@ import { GoSettings } from "react-icons/go";
 import "./offcanvas.css";
 
 function OffCanvas({ name, scroll, backdrop }) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const handleClose = () => setShow(false);
   const toggleShow = () => setShow((s) => !s);

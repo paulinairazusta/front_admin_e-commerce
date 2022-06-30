@@ -24,7 +24,6 @@ function App() {
           path="login"
           element={
             <>
-              <OffCanvas />
               <Login />
             </>
           }
