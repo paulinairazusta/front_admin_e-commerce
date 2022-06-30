@@ -14,7 +14,19 @@ function Admins() {
     console.log(admins);
   }, []);
 
-  return <p>Hola</p>;
+  return (
+    <>
+      {admins.map((admin) => {
+        return (
+          <ul key={admin._id}>
+            <li>
+              {admin.firstname} {admin.lastname}
+            </li>
+          </ul>
+        );
+      })}
+    </>
+  );
 }
 
 export default Admins;

@@ -1,24 +1,26 @@
 import { useState } from "react";
 import Axios from "axios";
 
-function Login() {
+function Register() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   console.log(email, password);
-  const handleLogin = async (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
-
-    const response = await Axios.post("http://localhost:3001/admin/login", {
-      email: { email },
-      password: { password },
+    const response = await Axios.post("http://localhost:3001/admin/register", {
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      password: password,
     });
+
     console.log(response.data);
   };
   return (
     <>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleRegister}>
         <p>Poné tu nombre</p>
         <input
           type="text"
@@ -33,7 +35,7 @@ function Login() {
         ></input>
         <p>Poné tu email</p>
         <input
-          type="email"
+          type="text"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         ></input>
@@ -49,4 +51,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

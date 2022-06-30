@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import OffCanvas from "./components/sidebar/OffCanvas";
 import OffCanvasOptions from "./components/sidebar/OffCanvasOptions";
 // import options from "./components/sidebar/options";
+import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import Main from "./components/main/Main";
 import Admins from "./components/admins/Admins";
@@ -41,6 +42,7 @@ function App() {
             </>
           }
         />
+        <Route path="register" element={<Register />} />
       </Routes>
     </div>
   );
