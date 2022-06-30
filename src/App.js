@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import OffCanvasOptions from "./components/sidebar/OffCanvasOptions";
 import Register from "./components/register/Register";
 import Login from "./components/login/Login";
-import Main from "./components/main/Main";
+import Main from "./components/dashboard/Main";
 import Products from "./components/products/Products";
 import Categories from "./components/categories/Categories";
 import Clients from "./components/clients/Clients";
