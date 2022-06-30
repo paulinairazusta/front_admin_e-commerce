@@ -2,28 +2,22 @@ import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
 import OffCanvas from "./components/sidebar/OffCanvas";
+import OffCanvasOptions from "./components/sidebar/OffCanvasOptions";
 // import options from "./components/sidebar/options";
 import Login from "./components/login/Login";
+import options from "./components/sidebar/options";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route
-          path="/"
-          element={
-            <OffCanvas
-              name="Enable body scrolling"
-              scroll={true}
-              backdrop={false}
-            />
-          }
-        />
+        <Route path="/" element={<OffCanvasOptions />} />
         {/* <Route path="profile" element={<></>} /> */}
         <Route
           path="login"
           element={
             <>
+              <OffCanvasOptions />
               <Login />
             </>
           }

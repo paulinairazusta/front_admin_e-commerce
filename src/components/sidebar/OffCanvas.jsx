@@ -8,7 +8,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { GoSettings } from "react-icons/go";
 import "./offcanvas.css";
 
-function OffCanvas({ name, scroll, backdrop }) {
+function OffCanvas({ name, ...props }) {
   const [show, setShow] = useState(true);
 
   const handleClose = () => setShow(false);
@@ -20,7 +20,12 @@ function OffCanvas({ name, scroll, backdrop }) {
         {name}
       </Button>
 
-      <Offcanvas show={show} onHide={handleClose} className="side-menu">
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        {...props}
+        className="side-menu"
+      >
         <Offcanvas.Header closeButton className="side-menu">
           <Link to="/" className="link">
             <Offcanvas.Title className="offcanvas-title">
