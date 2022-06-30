@@ -1,12 +1,13 @@
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
-import OffCanvas from "./components/sidebar/OffCanvas";
 import OffCanvasOptions from "./components/sidebar/OffCanvasOptions";
-// import options from "./components/sidebar/options";
 import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import Main from "./components/main/Main";
+import Products from "./components/products/Products";
+import Categories from "./components/categories/Categories";
+import Clients from "./components/clients/Clients";
 import Admins from "./components/admins/Admins";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           }
         />
         {/* <Route path="profile" element={<></>} /> */}
+        <Route path="register" element={<Register />} />
         <Route
           path="login"
           element={
@@ -32,7 +34,34 @@ function App() {
             </>
           }
         />
-        {/* <Route path="register" element={<></>} /> */}
+        <Route
+          path="products"
+          element={
+            <>
+              <OffCanvasOptions />
+              <Products />
+            </>
+          }
+        />
+        <Route
+          path="categories"
+          element={
+            <>
+              <OffCanvasOptions />
+              <Categories />
+            </>
+          }
+        />
+        <Route
+          path="clients"
+          element={
+            <>
+              <OffCanvasOptions />
+              <Clients />
+            </>
+          }
+        />
+
         <Route
           path="admins"
           element={
@@ -42,7 +71,6 @@ function App() {
             </>
           }
         />
-        <Route path="register" element={<Register />} />
       </Routes>
     </div>
   );

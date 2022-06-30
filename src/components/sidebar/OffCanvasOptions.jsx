@@ -1,7 +1,13 @@
 import OffCanvas from "./OffCanvas";
-import options from "./options";
 
 function Options() {
+  const options = [
+    {
+      name: "Enable body scrolling",
+      scroll: true,
+      backdrop: false,
+    },
+  ];
   return (
     <>
       {options.map((props, idx) => (
