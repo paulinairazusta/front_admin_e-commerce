@@ -8,6 +8,7 @@
 }
 
 .register-card {
+  align-items: center;
   background-color: white;
   border-radius: 0.25rem;
   box-shadow: 0 0 0.7rem 0 rgba(0, 0, 0, 0.1);
@@ -20,10 +21,15 @@
   width: 550px;
 }
 
-.label{
+.register-subtitle {
+  margin: 0.8rem 0 1.8rem;
+}
+
+.label {
   color: #495057;
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 0.2rem;
+  width: 100%;
 }
 
 .input {
@@ -32,7 +38,7 @@
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 1rem;
   outline: none;
-  padding: 1rem;
+  padding: 0.7rem;
   text-align: left;
   transition: all 0.3s;
   width: 100%;
@@ -50,12 +56,20 @@
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   margin: 1rem 0 0.3rem;
-  padding: 8px 46px;
+  padding: 0.7rem 46px;
   transition: all 0.5s;
   width: 100%;
 }
 
 .button-submit:hover {
   background-color: white;
+  border: 1px solid #3b7ddd;
   color: #3b7ddd;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  height: 7rem;
+  margin-bottom: 1rem;
+  width: 7rem;
 }

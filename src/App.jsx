@@ -10,6 +10,7 @@ import Categories from "./components/categories/Categories";
 import Clients from "./components/clients/Clients";
 import Orders from "./components/orders/Orders";
 import Admins from "./components/admins/Admins";
+import FormProducts from "./components/products/FormProducts";
 
 function App() {
   return (
@@ -61,15 +62,6 @@ function App() {
             </>
           }
         />
-        <Route
-          path="orders"
-          element={
-            <>
-              <OffCanvasOptions />
-              <Orders />
-            </>
-          }
-        />
 
         <Route
           path="admins"
@@ -80,6 +72,14 @@ function App() {
             </>
           }
         />
+        <Route
+          path="newproduct"
+          element={
+            <>
+              <OffCanvasOptions /> <FormProducts />
+            </>
+          }
+        ></Route>
       </Routes>
     </div>
   );

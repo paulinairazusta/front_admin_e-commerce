@@ -9,12 +9,11 @@ function FormProducts() {
 	const [category, setCategory] = useState("");
 
 	const createProductHandler = async () => {
-		const response = await axios.post(`${process.env.API_URL}/api/product`, {
+		const response = await axios.post("http://localhost:3001/api/product", {
 			name,
 			description,
 			price,
 			image,
-			category,
 		});
 		console.log(response.data);
 	};
@@ -51,13 +50,7 @@ function FormProducts() {
 					type='file'
 					id=''
 				/>
-				<label htmlFor=''>Product Category</label>
-				<input
-					value={category}
-					onChange={(event) => setCategory(event.target.value)}
-					type='text'
-					id=''
-				/>
+
 				<button>Send</button>
 			</form>
 		</div>

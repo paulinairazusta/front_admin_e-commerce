@@ -25,7 +25,7 @@ function Register() {
       <div className="register-container">
         <div>
           <h2>Get started</h2>
-          <p>
+          <p className="register-subtitle">
             Start creating the best possible user experience for you customers.
           </p>
           <form onSubmit={handleRegister} className="register-card">
@@ -71,7 +71,7 @@ function Register() {
               placeholder="Password"
             />
             <button className="button-submit" type="submit">
-              Register now
+              Sign up
             </button>
           </form>
         </div>
