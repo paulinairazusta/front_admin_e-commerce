@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import "./categories.css";
 
+import "../products/products.css";
+
+import { Table } from "react-bootstrap";
+import { BiEdit } from "react-icons/bi";
+import { RiDeleteBinLine } from "react-icons/ri";
+
 function Categories() {
   const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
@@ -23,7 +29,6 @@ function Categories() {
 
   return (
     <>
-      <button className="btn btn-light">New category</button>
       <form action="" onSubmit={handleCreate}>
         <input
           type="text"
@@ -33,13 +38,51 @@ function Categories() {
         <button type="submit">Create category</button>
       </form>
 
-      {categories.map((category) => {
+      <div className="content">
+        <div className="products-card">
+          <div className="header-container ">
+            <strong>Categories</strong>
+            <button className="btn-new-product">New category</button>
+          </div>
+          <div className="table-products-container">
+            <Table hover>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>CATEGORY</th>
+                  <th>ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody>
+                {categories.map((category) => {
+                  return (
+                    <>
+                      <tr key={category._id} className="align-middle">
+                        <td>{category._id}</td>
+                        <td>{category.name}</td>
+                        <td>
+                          <div className="edit-delete-icons">
+                            <BiEdit />
+                            <RiDeleteBinLine />
+                          </div>
+                        </td>
+                      </tr>
+                    </>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </div>
+        </div>
+      </div>
+
+      {/* {categories.map((category) => {
         return (
           <ul className="list-unstyled" key={category._id}>
             <li>{category.name}</li>
           </ul>
         );
-      })}
+      })} */}
     </>
   );
 }
