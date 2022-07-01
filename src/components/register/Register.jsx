@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Axios from "axios";
 
+import "./register.css";
+
 function Register() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -20,33 +22,60 @@ function Register() {
   };
   return (
     <>
-      <form onSubmit={handleRegister}>
-        <p>Poné tu nombre</p>
-        <input
-          type="text"
-          value={firstname}
-          onChange={(event) => setFirstname(event.target.value)}
-        ></input>
-        <p>Poné tu apellido</p>
-        <input
-          type="text"
-          value={lastname}
-          onChange={(event) => setLastname(event.target.value)}
-        ></input>
-        <p>Poné tu email</p>
-        <input
-          type="text"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        ></input>
-        <p>Poné tu contraseña</p>
-        <input
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        ></input>
-        <button type="submit">Dale!</button>
-      </form>
+      <div className="register-container">
+        <div>
+          <h2>Get started</h2>
+          <p>
+            Start creating the best possible user experience for you customers.
+          </p>
+          <form onSubmit={handleRegister} className="register-card">
+            <label className="label" htmlFor="">
+              Name
+            </label>
+            <input
+              className="input"
+              type="text"
+              value={firstname}
+              onChange={(event) => setFirstname(event.target.value)}
+              placeholder="Jane"
+            />
+            <label className="label" htmlFor="">
+              Last Name
+            </label>
+            <input
+              className="input"
+              type="text"
+              value={lastname}
+              onChange={(event) => setLastname(event.target.value)}
+              placeholder="Doe"
+            />
+
+            <label className="label" htmlFor="">
+              Email
+            </label>
+            <input
+              className="input"
+              type="text"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="example@example.com"
+            />
+            <label className="label" htmlFor="">
+              Password
+            </label>
+            <input
+              className="input"
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder="Password"
+            />
+            <button className="button-submit" type="submit">
+              Register now
+            </button>
+          </form>
+        </div>
+      </div>
     </>
   );
 }
