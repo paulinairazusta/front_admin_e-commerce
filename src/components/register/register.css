@@ -20,6 +20,10 @@
   width: 550px;
 }
 
+.register-subtitle{
+  margin: 0.8rem 0 1.8rem;
+}
+
 .label{
   color: #495057;
   font-family: Arial, Helvetica, sans-serif;
@@ -32,7 +36,7 @@
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 1rem;
   outline: none;
-  padding: 1rem;
+  padding: 0.8rem;
   text-align: left;
   transition: all 0.3s;
   width: 100%;
@@ -50,7 +54,7 @@
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   margin: 1rem 0 0.3rem;
-  padding: 8px 46px;
+  padding: 0.8rem 46px;
   transition: all 0.5s;
   width: 100%;
 }
