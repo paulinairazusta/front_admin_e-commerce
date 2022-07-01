@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #f5f7fb !important;
+}
+
 .content {
   background-color: #f5f7fb;
   display: flex;
