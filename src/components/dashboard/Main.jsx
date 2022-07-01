@@ -5,11 +5,13 @@ import OffCanvasOptions from "../sidebar/OffCanvasOptions";
 import { BsTruck, BsCart2 } from "react-icons/bs";
 import { FiDollarSign, FiUsers } from "react-icons/fi";
 import CalendarCard from "./CalendarCard";
+import WorldMapCard from "./WorldMapCard";
+import PieChartCard from "./PieChartCard";
 
 function Main() {
   return (
     <div className="content">
-      {/* <OffCanvasOptions /> */}
+      <OffCanvasOptions />
       {/* <h1>Analytics Dashboard</h1> */}
       <div className="sales-visitors-container">
         <div className="sales-container">
@@ -55,6 +57,31 @@ function Main() {
       <div className="calendar-card">
         <h5 className="card-title">Calendar</h5>
         <CalendarCard />
+      </div>
+
+      <div className="chart-card">
+        <h5 className="card-title">Real-Time</h5>
+        <WorldMapCard />
+      </div>
+
+      <div className="calendar-card">
+        <h5 className="card-title">Browser Usage</h5>
+        <div className="pie-chart-container">
+          <PieChartCard />
+          <table>
+            <tbody>
+              <tr>
+                <td>Chrome</td> <td>4306</td>
+              </tr>
+              <tr>
+                <td>Firefox</td> <td>3801</td>
+              </tr>
+              <tr>
+                <td>IE</td> <td>1689</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
