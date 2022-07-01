@@ -49,22 +49,18 @@ function Main() {
           />
         </div>
       </div>
-      <div className="chart-card">
+
+      <div className="chart-card card">
         <h5 className="card-title">Recent Movement</h5>
         <img src="Chart.png" alt="" />
       </div>
 
-      <div className="calendar-card">
+      <div className="calendar-card card">
         <h5 className="card-title">Calendar</h5>
         <CalendarCard />
       </div>
 
-      <div className="chart-card">
-        <h5 className="card-title">Real-Time</h5>
-        <WorldMapCard />
-      </div>
-
-      <div className="calendar-card">
+      <div className="card">
         <h5 className="card-title">Browser Usage</h5>
         <div className="pie-chart-container">
           <PieChartCard />
@@ -82,6 +78,11 @@ function Main() {
             </tbody>
           </table>
         </div>
+      </div>
+
+      <div className="chart-card card">
+        <h5 className="card-title">Real-Time</h5>
+        <WorldMapCard />
       </div>
     </div>
   );
