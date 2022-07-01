@@ -7,21 +7,21 @@ import { BiEdit } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 function Products() {
-	const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
-	useEffect(() => {
-		async function getProducts() {
-			const response = await Axios.get("http://localhost:3001/api/products");
-			setProducts(response.data);
-		}
-		getProducts();
-	}, []);
+  useEffect(() => {
+    async function getProducts() {
+      const response = await Axios.get("http://localhost:3001/api/products");
+      setProducts(response.data);
+    }
+    getProducts();
+  }, []);
 
-	return (
-		<>
-			<FormProducts />
-			{/* <button className='btn btn-light'>New product</button> */}
-			{products.map((product) => {
+  return (
+    <>
+      {/* <FormProducts /> */}
+      {/* <button className='btn btn-light'>New product</button> */}
+      {/* {products.map((product) => {
 				return (
 					<ul className='list-unstyled'>
 						<li>{product.name}</li>
@@ -29,53 +29,55 @@ function Products() {
 				);
 			})}
 		</>
-	);
-  return (
-    <div className="content">
-      <div className="products-card">
-        <div className="header-container ">
-          <strong>Products</strong>
-          <button className="btn-new-product">New product</button>
-        </div>
-        <div className="table-products-container">
-          <Table hover>
-            <thead>
-              <tr>
-                <th></th>
-                <th>TITLE</th>
-                <th>PRICE</th>
-                <th>ACTIONS</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product) => {
-                console.log(product.image);
-                return (
-                  <>
-                    <tr key="id" className="align-middle">
-                      <td>
-                        <img
-                          className="product-img"
-                          src={`http://localhost:3001/images/${product.image}`}
-                        />
-                      </td>
-                      <td>{product.name}</td>
-                      <td>{product.price}</td>
-                      <td>
-                        <div className="edit-delete-icons">
-                          <BiEdit />
-                          <RiDeleteBinLine />
-                        </div>
-                      </td>
-                    </tr>
-                  </>
-                );
-              })}
-            </tbody>
-          </Table>
+	); */}
+      {/*   
+  return ( */}
+      <div className="content">
+        <div className="products-card">
+          <div className="header-container ">
+            <strong>Products</strong>
+            <button className="btn-new-product" onClick={()=><FormProducts />}>New product</button>
+          </div>
+          <div className="table-products-container">
+            <Table hover>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>TITLE</th>
+                  <th>PRICE</th>
+                  <th>ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product) => {
+                  console.log(product.image);
+                  return (
+                    <>
+                      <tr key="id" className="align-middle">
+                        <td>
+                          <img
+                            className="product-img"
+                            src={`http://localhost:3001/images/${product.image}`}
+                          />
+                        </td>
+                        <td>{product.name}</td>
+                        <td>{product.price}</td>
+                        <td>
+                          <div className="edit-delete-icons">
+                            <BiEdit />
+                            <RiDeleteBinLine />
+                          </div>
+                        </td>
+                      </tr>
+                    </>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
