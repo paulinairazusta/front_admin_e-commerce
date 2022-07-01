@@ -8,6 +8,7 @@ import Main from "./components/dashboard/Main";
 import Products from "./components/products/Products";
 import Categories from "./components/categories/Categories";
 import Clients from "./components/clients/Clients";
+import Orders from "./components/orders/Orders";
 import Admins from "./components/admins/Admins";
 
 function App() {
@@ -57,6 +58,15 @@ function App() {
             <>
               <OffCanvasOptions />
               <Clients />
+            </>
+          }
+        />
+        <Route
+          path="orders"
+          element={
+            <>
+              <OffCanvasOptions />
+              <Orders />
             </>
           }
         />
