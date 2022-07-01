@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Axios from "axios";
+import "./register.css";
 
 function Register() {
   const [firstname, setFirstname] = useState("");
@@ -19,35 +20,39 @@ function Register() {
     console.log(response.data);
   };
   return (
-    <>
-      <form onSubmit={handleRegister}>
-        <p>Poné tu nombre</p>
+    <div className="form-container">
+      <form onSubmit={handleRegister} className="form">
+        <label htmlFor="firstname">Firstname</label>
         <input
+          id="firstname"
           type="text"
           value={firstname}
           onChange={(event) => setFirstname(event.target.value)}
         ></input>
-        <p>Poné tu apellido</p>
+        <label htmlFor="lastname">Lastname</label>
         <input
+          id="lastname"
           type="text"
           value={lastname}
           onChange={(event) => setLastname(event.target.value)}
         ></input>
-        <p>Poné tu email</p>
+        <label htmlFor="email">Email</label>
         <input
+          id="email"
           type="text"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         ></input>
-        <p>Poné tu contraseña</p>
+        <label htmlFor="password">Password</label>
         <input
+          id="password"
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         ></input>
-        <button type="submit">Dale!</button>
+        <button type="submit">Register</button>
       </form>
-    </>
+    </div>
   );
 }
 
