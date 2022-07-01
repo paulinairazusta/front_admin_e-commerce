@@ -8,6 +8,7 @@
 }
 
 .register-card {
+  align-items: center;
   background-color: white;
   border-radius: 0.25rem;
   box-shadow: 0 0 0.7rem 0 rgba(0, 0, 0, 0.1);
@@ -28,6 +29,7 @@
   color: #495057;
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 0.2rem;
+  width: 100%;
 }
 
 .input {
@@ -66,9 +68,8 @@
 }
 
 .user-avatar {
-
   border-radius: 50%;
   height: 7rem;
-  margin-bottom: 0.8rem;
-  /* object-fit: cover; */
+  margin-bottom: 1rem;
+  width: 7rem;
 }

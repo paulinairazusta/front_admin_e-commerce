@@ -19,12 +19,12 @@ function Login() {
     <>
       <div className="register-container">
         <div>
-          <img className="user-avatar" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="" />
-          <h2>Welcome back!</h2>
+                    <h2>Welcome back!</h2>
           <p className="register-subtitle">
             Sign in to your account to continue.
           </p>
           <form onSubmit={handleLogin} className="register-card">
+          <img className="user-avatar" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="" />
             <label className="label" htmlFor="">
               Email
             </label>
