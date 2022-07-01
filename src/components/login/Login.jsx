@@ -17,19 +17,21 @@ function Login() {
   return (
     <>
       <form onSubmit={handleLogin}>
-        <p>Poné tu email</p>
+        <label htmlFor="email">Email</label>
         <input
+          id="email"
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         ></input>
-        <p>Poné tu contraseña</p>
+        <label htmlFor="password">Password</label>
         <input
+          id="password"
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         ></input>
-        <button type="submit">Dale!</button>
+        <button type="submit">Login</button>
       </form>
     </>
   );
