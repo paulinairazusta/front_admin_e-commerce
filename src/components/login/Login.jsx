@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Axios from "axios";
+import "../register/register.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -16,21 +17,40 @@ function Login() {
   };
   return (
     <>
-      <form onSubmit={handleLogin}>
-        <p>Poné tu email</p>
-        <input
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        ></input>
-        <p>Poné tu contraseña</p>
-        <input
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        ></input>
-        <button type="submit">Dale!</button>
-      </form>
+      <div className="register-container">
+        <div>
+          <img className="user-avatar" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="" />
+          <h2>Welcome back!</h2>
+          <p className="register-subtitle">
+            Sign in to your account to continue.
+          </p>
+          <form onSubmit={handleLogin} className="register-card">
+            <label className="label" htmlFor="">
+              Email
+            </label>
+            <input
+              className="input"
+              type="email"
+              placeholder="example@example.com"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            ></input>
+            <label className="label" htmlFor="">
+              Password
+            </label>
+            <input
+              className="input"
+              type="password"
+              value={password}
+              placeholder="Password"
+              onChange={(event) => setPassword(event.target.value)}
+            ></input>
+            <button className="button-submit" type="submit">
+              Sign in
+            </button>
+          </form>
+        </div>
+      </div>
     </>
   );
 }

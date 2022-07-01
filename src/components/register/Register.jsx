@@ -71,7 +71,7 @@ function Register() {
               placeholder="Password"
             />
             <button className="button-submit" type="submit">
-              Register now
+              Sign up
             </button>
           </form>
         </div>
