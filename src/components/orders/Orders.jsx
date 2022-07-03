@@ -1,29 +1,61 @@
 import Axios from "axios";
 import { useState, useEffect } from "react";
+import { Table } from "react-bootstrap";
+import OrderModal from "./OrderModal";
+import "./orders.css";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
+  const [currentOrder, setCurrentOrder] = useState(false);
 
   useEffect(() => {
     async function getOrders() {
       const response = await Axios.get("http://localhost:3001/api/orders");
       setOrders(response.data);
-      console.log(response.data);
     }
     getOrders();
   }, []);
   return (
-    <>
-      {orders.map((order) => {
-        return (
-          <ul>
-            {order.productsNames.map((product) => {
-              return <li>{product}</li>;
-            })}
-          </ul>
-        );
-      })}
-    </>
+    <div className="content">
+      <div className="products-card">
+        <div className="table-products-container">
+          <Table hover>
+            <thead>
+              <tr>
+                <th>ORDER ID</th>
+                <th>CLIENT</th>
+                <th>DATE</th>
+                <th>STATUS</th>
+                <th>TOTAL PRICE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map((order) => {
+                return (
+                  <>
+                    <tr
+                      key={order._id}
+                      className="align-middle order"
+                      onClick={() => setCurrentOrder(order)}
+                    >
+                      <td>{order._id}</td>
+                      <td>Nombre del cliente</td>
+                      <td>{order.date}</td>
+                      <td>{order.status}</td>
+                      <td>{order.totalPrice}</td>
+                    </tr>
+                    <OrderModal
+                      currentOrder={currentOrder}
+                      setCurrentOrder={setCurrentOrder}
+                    />
+                  </>
+                );
+              })}
+            </tbody>
+          </Table>
+        </div>
+      </div>
+    </div>
   );
 }
 

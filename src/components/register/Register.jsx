@@ -8,7 +8,6 @@ function Register() {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(email, password);
   const handleRegister = async (event) => {
     event.preventDefault();
     const response = await Axios.post("http://localhost:3001/admin/register", {
@@ -17,8 +16,6 @@ function Register() {
       email: email,
       password: password,
     });
-
-    console.log(response.data);
   };
   return (
     <>

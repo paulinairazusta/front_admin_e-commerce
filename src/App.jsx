@@ -62,7 +62,15 @@ function App() {
             </>
           }
         />
-
+        <Route
+          path="orders"
+          element={
+            <>
+              <OffCanvasOptions />
+              <Orders />
+            </>
+          }
+        />
         <Route
           path="admins"
           element={
