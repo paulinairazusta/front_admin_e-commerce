@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import "./products.css";
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { BsToggle2On, BsToggle2Off } from "react-icons/bs";
 
 function Products() {
 	const [products, setProducts] = useState([]);
@@ -56,6 +54,7 @@ function Products() {
 													<img
 														className='product-img'
 														src={`http://localhost:3001/images/${product.image}`}
+														alt='product'
 													/>
 												</td>
 												<td>{product.name}</td>
