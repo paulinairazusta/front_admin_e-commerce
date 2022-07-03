@@ -5,9 +5,17 @@ import "./products.css";
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { BsToggle2On, BsToggle2Off } from "react-icons/bs";
 
 function Products() {
 	const [products, setProducts] = useState([]);
+	const [checked, setChecked] = useState(true);
+
+	const toggleProductHandler = async (productId) => {
+		const response = await Axios.delete(
+			`http://localhost:3001/api/products/${productId}`
+		);
+	};
 
 	useEffect(() => {
 		async function getProducts() {
@@ -34,12 +42,13 @@ function Products() {
 									<th></th>
 									<th>TITLE</th>
 									<th>PRICE</th>
+									<th>STOCK</th>
 									<th>ACTIONS</th>
+									<th>AVAILABLE</th>
 								</tr>
 							</thead>
 							<tbody>
 								{products.map((product) => {
-									console.log(product.image);
 									return (
 										<>
 											<tr key='id' className='align-middle'>
@@ -51,10 +60,24 @@ function Products() {
 												</td>
 												<td>{product.name}</td>
 												<td>{product.price}</td>
+												<td>{product.stock}</td>
 												<td>
 													<div className='edit-delete-icons'>
 														<BiEdit />
-														<RiDeleteBinLine />
+													</div>
+												</td>
+												<td>
+													<div>
+														<input
+															defaultChecked={checked}
+															type='checkbox'
+															onChange={() => {
+																// product.available = !product.available;
+																toggleProductHandler(product._id);
+																setChecked(!checked);
+																console.log(product.available);
+															}}
+														/>
 													</div>
 												</td>
 											</tr>
