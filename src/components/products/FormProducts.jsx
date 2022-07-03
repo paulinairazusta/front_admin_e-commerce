@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../register/register.css";
 
 function FormProducts() {
+	const navigate = useNavigate();
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState("");
@@ -25,13 +27,18 @@ function FormProducts() {
 	}, []);
 
 	const createProductHandler = async () => {
-		const response = await axios.post("http://localhost:3001/api/product", {
-			name,
-			description,
-			price,
-			image,
-			category,
-		});
+		const response = await axios.post(
+			"http://localhost:3001/api/product",
+			{
+				name,
+				description,
+				price,
+				image,
+				category,
+			},
+
+			{ headers: { "Content-Type": "multipart/form-data" } }
+		);
 		console.log(response.data);
 	};
 	return (
@@ -44,6 +51,7 @@ function FormProducts() {
 					onSubmit={(event) => {
 						event.preventDefault();
 						createProductHandler();
+						navigate("/products");
 					}}>
 					<label className='label' htmlFor=''>
 						Product Name
@@ -79,9 +87,8 @@ function FormProducts() {
 					</label>
 					<input
 						className='input'
-						onChange={(event) => setImage(event.target.files[0].name)}
+						onChange={(event) => setImage(event.target.files[0])}
 						type='file'
-						id=''
 					/>
 					<label className='label' htmlFor=''>
 						Product category
