@@ -15,6 +15,7 @@ function Orders() {
     }
     getOrders();
   }, []);
+
   return (
     <div className="content">
       <div className="products-card">
@@ -23,8 +24,9 @@ function Orders() {
             <thead>
               <tr>
                 <th>ORDER ID</th>
-                <th>CLIENT</th>
                 <th>DATE</th>
+                <th>CLIENT</th>
+                <th>ADDRESS</th>
                 <th>STATUS</th>
                 <th>TOTAL PRICE</th>
               </tr>
@@ -39,10 +41,14 @@ function Orders() {
                       onClick={() => setCurrentOrder(order)}
                     >
                       <td>{order._id}</td>
-                      <td>Nombre del cliente</td>
                       <td>{order.date}</td>
+                      <td>
+                        {order.user.firstname} {order.user.lastname}
+                      </td>
+                      <td>{order.user.address}</td>
+
                       <td>{order.status}</td>
-                      <td>{order.totalPrice}</td>
+                      <td>${order.totalPrice}</td>
                     </tr>
                     <OrderModal
                       currentOrder={currentOrder}

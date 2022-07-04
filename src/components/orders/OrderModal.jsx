@@ -4,7 +4,7 @@ function OrderModal({ currentOrder, setCurrentOrder }) {
   return (
     <Modal show={currentOrder} onHide={() => setCurrentOrder(false)}>
       <Modal.Header closeButton>
-        <Modal.Title>Order Nº {currentOrder._id}</Modal.Title>
+        <Modal.Title>Details</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {currentOrder &&
