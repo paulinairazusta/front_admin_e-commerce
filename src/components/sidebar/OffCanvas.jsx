@@ -10,8 +10,8 @@ import {
   AiOutlineArrowRight,
   AiOutlineUser,
 } from "react-icons/ai";
-import { BiUserPlus, BiCategoryAlt } from "react-icons/bi";
-import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { BiCategoryAlt } from "react-icons/bi";
+import { FiLogOut } from "react-icons/fi";
 import { GoSettings } from "react-icons/go";
 import { GiCakeSlice } from "react-icons/gi";
 import { HiUsers } from "react-icons/hi";
@@ -32,12 +32,6 @@ function OffCanvas({ name, show, setShow, ...props }) {
     setShow((s) => !s);
     // setHide(!hide);
   };
-
-  // function FollowFunctional() {
-  //   const [follow, setFollow] = React.useState(true)
-  //   return <h2 onClick={()=> setFollow(!follow)}>{follow ? "Follow" : "Unfollow"}</h2>
-  // }
-
   return (
     <>
       <Button variant="light" onClick={toggleShow} className="me-2">
