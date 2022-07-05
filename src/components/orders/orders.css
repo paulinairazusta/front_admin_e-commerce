@@ -1,3 +1,26 @@
 .order {
   cursor: pointer;
 }
+
+.total-price {
+  margin-left: 20rem;
+  padding: 6px 0px 6px 14px;
+}
+
+.modal-title {
+  margin-left: 11rem;
+}
+
+.margin-left {
+  margin-left: 0.4rem;
+}
+
+.user-container {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  margin: 0.4rem;
+}
