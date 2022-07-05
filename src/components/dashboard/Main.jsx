@@ -1,7 +1,8 @@
+import { useState } from "react";
 import Card from "./Card";
 import "./main.css";
 import "./card.css";
-import OffCanvasOptions from "../sidebar/OffCanvasOptions";
+import OffCanvas from "../sidebar/OffCanvas";
 import { BsTruck, BsCart2 } from "react-icons/bs";
 import { FiDollarSign, FiUsers } from "react-icons/fi";
 import CalendarCard from "./CalendarCard";
@@ -9,9 +10,11 @@ import WorldMapCard from "./WorldMapCard";
 import PieChartCard from "./PieChartCard";
 
 function Main() {
+  const [showMenu, setShowMenu] = useState(true);
+
   return (
-    <div className="content">
-      <OffCanvasOptions />
+    <div className={`content${showMenu ? " with-margin" : ""}`}>
+      <OffCanvas show={showMenu} setShow={setShowMenu} />
       {/* <h1>Analytics Dashboard</h1> */}
       <div className="sales-visitors-container">
         <div className="sales-container">

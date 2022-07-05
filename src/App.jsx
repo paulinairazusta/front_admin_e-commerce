@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
-import OffCanvasOptions from "./components/sidebar/OffCanvasOptions";
+import OffCanvas from "./components/sidebar/OffCanvas";
 import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import Main from "./components/dashboard/Main";
@@ -38,7 +38,7 @@ function App() {
           path="login"
           element={
             <>
-              <OffCanvasOptions />
+              <OffCanvas />
               <Login />
             </>
           }
@@ -47,7 +47,7 @@ function App() {
           path="products"
           element={
             <ProtectedRoute>
-              <OffCanvasOptions />
+              <OffCanvas />
               <Products />
             </ProtectedRoute>
           }
@@ -56,7 +56,7 @@ function App() {
           path="categories"
           element={
             <ProtectedRoute>
-              <OffCanvasOptions />
+              <OffCanvas />
               <Categories />
             </ProtectedRoute>
           }
@@ -65,7 +65,7 @@ function App() {
           path="clients"
           element={
             <ProtectedRoute>
-              <OffCanvasOptions />
+              <OffCanvas />
               <Clients />
             </ProtectedRoute>
           }
@@ -74,7 +74,7 @@ function App() {
           path="orders"
           element={
             <ProtectedRoute>
-              <OffCanvasOptions />
+              <OffCanvas />
               <Orders />
             </ProtectedRoute>
           }
@@ -83,7 +83,7 @@ function App() {
           path="admins"
           element={
             <ProtectedRoute>
-              <OffCanvasOptions />
+              <OffCanvas />
               <Admins />
             </ProtectedRoute>
           }
@@ -92,7 +92,7 @@ function App() {
           path="newproduct"
           element={
             <ProtectedRoute>
-              <OffCanvasOptions /> <FormProducts />
+              <OffCanvas /> <FormProducts />
             </ProtectedRoute>
           }
         ></Route>

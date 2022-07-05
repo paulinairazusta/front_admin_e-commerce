@@ -21,10 +21,8 @@ function Register() {
     <>
       <div className="register-container">
         <div>
-          <h2>Get started</h2>
-          <p className="register-subtitle">
-            Start creating the best possible user experience for you customers.
-          </p>
+          <h3>Register new admin</h3>
+          {/* <p className="register-subtitle">Register a new admin.</p> */}
           <form onSubmit={handleRegister} className="register-card">
             <label className="label" htmlFor="">
               Name
@@ -68,7 +66,7 @@ function Register() {
               placeholder="Password"
             />
             <button className="button-submit" type="submit">
-              Sign up
+              Register
             </button>
           </form>
         </div>
