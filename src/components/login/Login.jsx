@@ -3,11 +3,13 @@ import Axios from "axios";
 import "../register/register.css";
 import { storeAdminInfo } from "../../redux/adminSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -19,6 +21,7 @@ function Login() {
     dispatch(storeAdminInfo({ adminInfo: response.data }));
     setEmail("");
     setPassword("");
+    navigate("/");
   };
 
   return (
