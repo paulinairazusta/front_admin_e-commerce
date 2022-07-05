@@ -6,11 +6,10 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import {
-  AiOutlineArrowLeft,
-  AiOutlineArrowRight,
+
   AiOutlineUser,
 } from "react-icons/ai";
-import { BiCategoryAlt } from "react-icons/bi";
+import { BiCategoryAlt, BiMenuAltLeft } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
 import { GoSettings } from "react-icons/go";
 import { GiCakeSlice } from "react-icons/gi";
@@ -34,9 +33,15 @@ function OffCanvas({ name, show, setShow, ...props }) {
   };
   return (
     <>
-      <Button variant="light" onClick={toggleShow} className="me-2">
-        {show ? <AiOutlineArrowRight /> : <AiOutlineArrowLeft />}
-      </Button>
+      <div className="admin-nav">
+        <button onClick={toggleShow} >
+          {<BiMenuAltLeft />}
+        </button>
+        <div className="admin-nav-user-info">
+          <img src="https://static.vecteezy.com/system/resources/previews/001/993/889/non_2x/beautiful-latin-woman-avatar-character-icon-free-vector.jpg" alt="" />
+          <span>Admin</span>
+        </div>
+      </div>
 
       <Offcanvas
         className="side-menu"
@@ -47,7 +52,7 @@ function OffCanvas({ name, show, setShow, ...props }) {
         backdrop={false}
         {...props}
       >
-        <Offcanvas.Header closeButton className="side-menu">
+        <Offcanvas.Header className="side-menu">
           <Link to="/" className="link">
             <Offcanvas.Title className="offcanvas-title">
               AdminKit
