@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 
 import "../products/products.css";
@@ -26,7 +27,9 @@ function Admins() {
         <div className="products-card">
           <div className="header-container ">
             <strong>Admins</strong>
-            <button className="btn-new-product">New admin</button>
+            <Link to="/register">
+              <button className="btn-new-product">New admin</button>
+            </Link>
           </div>
           <div className="table-products-container">
             <Table hover>

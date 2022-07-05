@@ -6,14 +6,18 @@ import { useNavigate } from "react-router-dom";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { FiLogIn } from "react-icons/fi";
+import {
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+  AiOutlineUser,
+} from "react-icons/ai";
 import { BiUserPlus, BiCategoryAlt } from "react-icons/bi";
-import { AiOutlineUser } from "react-icons/ai";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { GoSettings } from "react-icons/go";
 import { GiCakeSlice } from "react-icons/gi";
 import { HiUsers } from "react-icons/hi";
 import { RiBillLine, RiAdminLine } from "react-icons/ri";
+
 import "./offcanvas.css";
 
 function OffCanvas({ name, ...props }) {
@@ -69,7 +73,7 @@ function OffCanvas({ name, ...props }) {
               </Link>
             </li>
 
-            <li>
+            {/* <li>
               <Link to="/login" className="link">
                 <FiLogIn /> Sign In
               </Link>
@@ -78,7 +82,7 @@ function OffCanvas({ name, ...props }) {
               <Link to="/register" className="link">
                 <BiUserPlus /> Sign Up
               </Link>
-            </li>
+            </li> */}
           </ul>
           <span className="list">Admin tools</span>
           <ul className="list">
@@ -109,14 +113,19 @@ function OffCanvas({ name, ...props }) {
               </Link>
             </li>
           </ul>
-          <button
-            onClick={() => {
-              dispatch(logout());
-              navigate("/products");
-            }}
-          >
-            Logout
-          </button>
+          <ul className="list-logout">
+            <li>
+              <div
+                className="link logout-button"
+                onClick={() => {
+                  dispatch(logout());
+                  navigate("/products");
+                }}
+              >
+                <FiLogOut /> Logout
+              </div>
+            </li>
+          </ul>
         </Offcanvas.Body>
       </Offcanvas>
     </>
