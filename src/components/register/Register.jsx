@@ -1,4 +1,6 @@
 import { useState } from "react";
+import OffCanvas from "../sidebar/OffCanvas";
+
 import Axios from "axios";
 
 import "./register.css";
@@ -8,6 +10,8 @@ function Register() {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showMenu, setShowMenu] = useState(true);
+
   const handleRegister = async (event) => {
     event.preventDefault();
     const response = await Axios.post("http://localhost:3001/admin/register", {
@@ -19,7 +23,8 @@ function Register() {
   };
   return (
     <>
-      <div className="register-container">
+      <div className={`content${showMenu ? " with-margin" : ""}`}>
+        <OffCanvas show={showMenu} setShow={setShowMenu} />
         <div>
           <h3>Register new admin</h3>
           {/* <p className="register-subtitle">Register a new admin.</p> */}

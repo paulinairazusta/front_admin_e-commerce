@@ -3,10 +3,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import {
-
   AiOutlineUser,
 } from "react-icons/ai";
 import { BiCategoryAlt, BiMenuAltLeft } from "react-icons/bi";
