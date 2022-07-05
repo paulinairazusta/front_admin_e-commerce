@@ -38,7 +38,6 @@ function App() {
           path="login"
           element={
             <>
-              <OffCanvas />
               <Login />
             </>
           }
@@ -47,7 +46,6 @@ function App() {
           path="products"
           element={
             <ProtectedRoute>
-              <OffCanvas />
               <Products />
             </ProtectedRoute>
           }
@@ -56,7 +54,6 @@ function App() {
           path="categories"
           element={
             <ProtectedRoute>
-              <OffCanvas />
               <Categories />
             </ProtectedRoute>
           }
@@ -65,7 +62,6 @@ function App() {
           path="clients"
           element={
             <ProtectedRoute>
-              <OffCanvas />
               <Clients />
             </ProtectedRoute>
           }
@@ -74,7 +70,6 @@ function App() {
           path="orders"
           element={
             <ProtectedRoute>
-              <OffCanvas />
               <Orders />
             </ProtectedRoute>
           }
@@ -83,7 +78,6 @@ function App() {
           path="admins"
           element={
             <ProtectedRoute>
-              <OffCanvas />
               <Admins />
             </ProtectedRoute>
           }
@@ -92,7 +86,7 @@ function App() {
           path="newproduct"
           element={
             <ProtectedRoute>
-              <OffCanvas /> <FormProducts />
+              <FormProducts />
             </ProtectedRoute>
           }
         ></Route>

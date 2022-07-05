@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import "../products/products.css";
+import OffCanvas from "../sidebar/OffCanvas";
 
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
@@ -8,6 +9,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 
 function Clients() {
   const [clients, setClients] = useState([]);
+  const [showMenu, setShowMenu] = useState(true);
 
   const config = {
     headers: {
@@ -28,7 +30,8 @@ function Clients() {
 
   return (
     <>
-      <div className="content">
+      <div className={`content${showMenu ? " with-margin" : ""}`}>
+        <OffCanvas show={showMenu} setShow={setShowMenu} />
         <div className="products-card">
           <div className="header-container ">
             <strong>Clients</strong>

@@ -3,6 +3,7 @@ import Axios from "axios";
 import "./categories.css";
 
 import "../products/products.css";
+import OffCanvas from "../sidebar/OffCanvas";
 
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
@@ -16,6 +17,7 @@ function Categories() {
   };
   const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
+  const [showMenu, setShowMenu] = useState(true);
 
   useEffect(() => {
     async function getCategories() {
@@ -40,34 +42,35 @@ function Categories() {
   }
 
   return (
-    <>
-      <form action="" onSubmit={handleCreate}>
-        <input
-          type="text"
-          value={categoryName}
-          onChange={(event) => setCategoryName(event.target.value)}
-        />
-        <button type="submit">Create category</button>
-      </form>
-
-      <div className="content">
-        <div className="products-card">
-          <div className="header-container ">
-            <strong>Categories</strong>
-            <button className="btn-new-product">New category</button>
-          </div>
-          <div className="table-products-container">
-            <Table hover>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>CATEGORY</th>
-                  <th>ACTIONS</th>
-                </tr>
-              </thead>
-              <tbody>
-                {categories.map((category) => {
-                  return (
+    <div className={`content${showMenu ? " with-margin" : ""}`}>
+      <OffCanvas show={showMenu} setShow={setShowMenu} />
+      {/* <div className="content"> */}
+      <div className="products-card">
+        <form action="" onSubmit={handleCreate}>
+          <input
+            type="text"
+            value={categoryName}
+            onChange={(event) => setCategoryName(event.target.value)}
+          />
+          <button type="submit">Create category</button>
+        </form>
+        <div className="header-container ">
+          <strong>Categories</strong>
+          <button className="btn-new-product">New category</button>
+        </div>
+        <div className="table-products-container">
+          <Table hover>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>CATEGORY</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categories.map((category) => {
+                return (
+                  <>
                     <tr key={category._id} className="align-middle">
                       <td>{category._id}</td>
                       <td>{category.name}</td>
@@ -78,14 +81,14 @@ function Categories() {
                         </div>
                       </td>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </Table>
-          </div>
+                  </>
+                );
+              })}
+            </tbody>
+          </Table>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

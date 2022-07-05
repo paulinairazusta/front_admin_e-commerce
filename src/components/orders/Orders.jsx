@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import OrderModal from "./OrderModal";
 import "./orders.css";
+import OffCanvas from "../sidebar/OffCanvas";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [currentOrder, setCurrentOrder] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
 
   const config = {
     headers: {
@@ -26,7 +28,8 @@ function Orders() {
   }, []);
 
   return (
-    <div className="content">
+    <div className={`content${showMenu ? " with-margin" : ""}`}>
+      <OffCanvas show={showMenu} setShow={setShowMenu} />
       <div className="products-card">
         <div className="table-products-container">
           <Table hover>

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import OffCanvas from "../sidebar/OffCanvas";
+
 import Axios from "axios";
 
 import "./register.css";
@@ -14,6 +16,7 @@ function Register() {
       Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
     },
   };
+  const [showMenu, setShowMenu] = useState(true);
 
   const handleRegister = async (event) => {
     event.preventDefault();
@@ -31,7 +34,8 @@ function Register() {
   };
   return (
     <>
-      <div className="register-container">
+      <div className={`content${showMenu ? " with-margin" : ""}`}>
+        <OffCanvas show={showMenu} setShow={setShowMenu} />
         <div>
           <h3>Register new admin</h3>
           {/* <p className="register-subtitle">Register a new admin.</p> */}

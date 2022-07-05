@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import Axios from "axios";
 
 import "../products/products.css";
+import OffCanvas from "../sidebar/OffCanvas";
 
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 function Admins() {
+  const [showMenu, setShowMenu] = useState(true);
   const [admins, setAdmins] = useState([]);
 
   const config = {
@@ -28,10 +30,10 @@ function Admins() {
 
     getAdmins();
   }, []);
-
   return (
     <>
-      <div className="content">
+      <div className={`content${showMenu ? " with-margin" : ""}`}>
+        <OffCanvas show={showMenu} setShow={setShowMenu} />
         <div className="products-card">
           <div className="header-container ">
             <strong>Admins</strong>

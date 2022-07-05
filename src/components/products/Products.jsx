@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import OffCanvas from "../sidebar/OffCanvas";
+
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import "./products.css";
@@ -8,6 +10,7 @@ import { BiEdit } from "react-icons/bi";
 function Products() {
   const [products, setProducts] = useState([]);
   const [checked, setChecked] = useState(true);
+  const [showMenu, setShowMenu] = useState(true);
 
   const toggleProductHandler = async (productId) => {
     const response = await Axios.delete(
@@ -34,7 +37,8 @@ function Products() {
 
   return (
     <>
-      <div className="content">
+      <div className={`content${showMenu ? " with-margin" : ""}`}>
+        <OffCanvas show={showMenu} setShow={setShowMenu} />
         <div className="products-card">
           <div className="header-container ">
             <strong>Products</strong>
