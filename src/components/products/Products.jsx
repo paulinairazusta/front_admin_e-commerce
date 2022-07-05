@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import "./products.css";
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
-import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -13,13 +11,22 @@ function Products() {
 
   const toggleProductHandler = async (productId) => {
     const response = await Axios.delete(
-      `http://localhost:3001/api/products/${productId}`
+      `${process.env.REACT_APP_API_URL}/${productId}`
     );
+  };
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+    },
   };
 
   useEffect(() => {
     async function getProducts() {
-      const response = await Axios.get("http://localhost:3001/api/products");
+      const response = await Axios.get(
+        `${process.env.REACT_APP_API_URL}/api/products`,
+        config
+      );
       setProducts(response.data);
     }
     getProducts();
@@ -50,39 +57,40 @@ function Products() {
               <tbody>
                 {products.map((product) => {
                   return (
-                    <>
-                      <tr key="id" className="align-middle">
-                        <td>
-                          <img
-                            className="product-img"
-                            src={`http://localhost:3001/images/${product.image}`}
-                            alt="product"
+                    <tr key={product._id} className="align-middle">
+                      <td>
+                        <img
+                          className="product-img"
+                          src={
+                            (`${process.env.REACT_APP_API_URL}/images/${product.image}`,
+                            config)
+                          }
+                          alt="product"
+                        />
+                      </td>
+                      <td>{product.name}</td>
+                      <td>{product.price}</td>
+                      <td>{product.stock}</td>
+                      <td>
+                        <div className="edit-delete-icons">
+                          <BiEdit />
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <input
+                            defaultChecked={checked}
+                            type="checkbox"
+                            onChange={() => {
+                              // product.available = !product.available;
+                              toggleProductHandler(product._id);
+                              setChecked(!checked);
+                              console.log(product.available);
+                            }}
                           />
-                        </td>
-                        <td>{product.name}</td>
-                        <td>{product.price}</td>
-                        <td>{product.stock}</td>
-                        <td>
-                          <div className="edit-delete-icons">
-                            <BiEdit />
-                          </div>
-                        </td>
-                        <td>
-                          <div>
-                            <input
-                              defaultChecked={checked}
-                              type="checkbox"
-                              onChange={() => {
-                                // product.available = !product.available;
-                                toggleProductHandler(product._id);
-                                setChecked(!checked);
-                                console.log(product.available);
-                              }}
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    </>
+                        </div>
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>

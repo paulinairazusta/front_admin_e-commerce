@@ -70,13 +70,16 @@ function Main() {
           <table>
             <tbody>
               <tr>
-                <td>Chrome</td> <td>4306</td>
+                <td>Chrome</td>
+                <td>4306</td>
               </tr>
               <tr>
-                <td>Firefox</td> <td>3801</td>
+                <td>Firefox</td>
+                <td>3801</td>
               </tr>
               <tr>
-                <td>IE</td> <td>1689</td>
+                <td>IE</td>
+                <td>1689</td>
               </tr>
             </tbody>
           </table>

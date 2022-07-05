@@ -9,9 +9,18 @@ import { RiDeleteBinLine } from "react-icons/ri";
 function Clients() {
   const [clients, setClients] = useState([]);
 
+  const config = {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+    },
+  };
+
   useEffect(() => {
     async function getClients() {
-      const response = await Axios.get("http://localhost:3001/api/users");
+      const response = await Axios.get(
+        `${process.env.REACT_APP_API_URL}/api/users`,
+        config
+      );
       setClients(response.data);
     }
     getClients();
@@ -38,24 +47,25 @@ function Clients() {
               <tbody>
                 {clients.map((client) => {
                   return (
-                    <>
-                      <tr key={client._id} className="align-middle">
-                        <td>
-                          <img
-                            className="product-img"
-                            src={`http://localhost:3001/images/${client.image}`}
-                          />
-                        </td>
-                        <td>{client.firstname}</td>
-                        <td>{client.lastname}</td>
-                        <td>
-                          <div className="edit-delete-icons">
-                            <BiEdit />
-                            <RiDeleteBinLine />
-                          </div>
-                        </td>
-                      </tr>
-                    </>
+                    <tr key={client._id} className="align-middle">
+                      <td>
+                        <img
+                          className="product-img"
+                          src={
+                            (`${process.env.REACT_APP_API_URL}/images/${client.image}`,
+                            config)
+                          }
+                        />
+                      </td>
+                      <td>{client.firstname}</td>
+                      <td>{client.lastname}</td>
+                      <td>
+                        <div className="edit-delete-icons">
+                          <BiEdit />
+                          <RiDeleteBinLine />
+                        </div>
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>
@@ -63,16 +73,6 @@ function Clients() {
           </div>
         </div>
       </div>
-
-      {/* {clients.map((client) => {
-        return (
-          <ul className="list-unstyled" key={client._id}>
-            <li>
-              {client.firstname} {client.lastname}
-            </li>
-          </ul>
-        );
-      })} */}
     </>
   );
 }
