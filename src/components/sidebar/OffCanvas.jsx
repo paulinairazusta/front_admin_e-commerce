@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { logout } from "../../redux/adminSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -13,6 +17,9 @@ import { RiBillLine, RiAdminLine } from "react-icons/ri";
 import "./offcanvas.css";
 
 function OffCanvas({ name, ...props }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [show, setShow] = useState(true);
   const [hide, setHide] = useState(true);
 
@@ -102,6 +109,14 @@ function OffCanvas({ name, ...props }) {
               </Link>
             </li>
           </ul>
+          <button
+            onClick={() => {
+              dispatch(logout());
+              navigate("/products");
+            }}
+          >
+            Logout
+          </button>
         </Offcanvas.Body>
       </Offcanvas>
     </>
