@@ -20,7 +20,6 @@ function Admins() {
     }
 
     getAdmins();
-    console.log(admins);
   }, []);
   return (
     <>
@@ -37,7 +36,6 @@ function Admins() {
             <Table hover>
               <thead>
                 <tr>
-                  <th></th>
                   <th>FIRST NAME</th>
                   <th>LAST NAME</th>
                   <th>ACTIONS</th>
@@ -46,24 +44,16 @@ function Admins() {
               <tbody>
                 {admins.map((admin) => {
                   return (
-                    <>
-                      <tr key={admin._id} className="align-middle">
-                        <td>
-                          <img
-                            className="product-img"
-                            src={`http://localhost:3001/images/${admin.image}`}
-                          />
-                        </td>
-                        <td>{admin.firstname}</td>
-                        <td>{admin.lastname}</td>
-                        <td>
-                          <div className="edit-delete-icons">
-                            <BiEdit />
-                            <RiDeleteBinLine />
-                          </div>
-                        </td>
-                      </tr>
-                    </>
+                    <tr key={admin._id} className="align-middle">
+                      <td>{admin.firstname}</td>
+                      <td>{admin.lastname}</td>
+                      <td>
+                        <div className="edit-delete-icons">
+                          <BiEdit />
+                          <RiDeleteBinLine />
+                        </div>
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>

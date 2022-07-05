@@ -54,39 +54,36 @@ function Products() {
               <tbody>
                 {products.map((product) => {
                   return (
-                    <>
-                      <tr key="id" className="align-middle">
-                        <td>
-                          <img
-                            className="product-img"
-                            src={`http://localhost:3001/images/${product.image}`}
-                            alt="product"
+                    <tr key={product._id} className="align-middle">
+                      <td>
+                        <img
+                          className="product-img"
+                          src={`http://localhost:3001/images/${product.image}`}
+                          alt="product"
+                        />
+                      </td>
+                      <td>{product.name}</td>
+                      <td>{product.price}</td>
+                      <td>{product.stock}</td>
+                      <td>
+                        <div className="edit-delete-icons">
+                          <BiEdit />
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <input
+                            defaultChecked={checked}
+                            type="checkbox"
+                            onChange={() => {
+                              // product.available = !product.available;
+                              toggleProductHandler(product._id);
+                              setChecked(!checked);
+                            }}
                           />
-                        </td>
-                        <td>{product.name}</td>
-                        <td>{product.price}</td>
-                        <td>{product.stock}</td>
-                        <td>
-                          <div className="edit-delete-icons">
-                            <BiEdit />
-                          </div>
-                        </td>
-                        <td>
-                          <div>
-                            <input
-                              defaultChecked={checked}
-                              type="checkbox"
-                              onChange={() => {
-                                // product.available = !product.available;
-                                toggleProductHandler(product._id);
-                                setChecked(!checked);
-                                console.log(product.available);
-                              }}
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    </>
+                        </div>
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>

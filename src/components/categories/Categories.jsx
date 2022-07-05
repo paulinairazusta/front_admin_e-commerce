@@ -58,18 +58,16 @@ function Categories() {
             <tbody>
               {categories.map((category) => {
                 return (
-                  <>
-                    <tr key={category._id} className="align-middle">
-                      <td>{category._id}</td>
-                      <td>{category.name}</td>
-                      <td>
-                        <div className="edit-delete-icons">
-                          <BiEdit />
-                          <RiDeleteBinLine />
-                        </div>
-                      </td>
-                    </tr>
-                  </>
+                  <tr key={category._id} className="align-middle">
+                    <td>{category._id}</td>
+                    <td>{category.name}</td>
+                    <td>
+                      <div className="edit-delete-icons">
+                        <BiEdit />
+                        <RiDeleteBinLine />
+                      </div>
+                    </td>
+                  </tr>
                 );
               })}
             </tbody>

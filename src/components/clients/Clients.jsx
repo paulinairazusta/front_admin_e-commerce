@@ -32,7 +32,7 @@ function Clients() {
             <Table hover>
               <thead>
                 <tr>
-                  <th></th>
+                  {/* <th></th> */}
                   <th>FIRST NAME</th>
                   <th>LAST NAME</th>
                   <th>ACTIONS</th>
@@ -41,24 +41,22 @@ function Clients() {
               <tbody>
                 {clients.map((client) => {
                   return (
-                    <>
-                      <tr key={client._id} className="align-middle">
-                        <td>
-                          <img
-                            className="product-img"
-                            src={`http://localhost:3001/images/${client.image}`}
-                          />
-                        </td>
-                        <td>{client.firstname}</td>
-                        <td>{client.lastname}</td>
-                        <td>
-                          <div className="edit-delete-icons">
-                            <BiEdit />
-                            <RiDeleteBinLine />
-                          </div>
-                        </td>
-                      </tr>
-                    </>
+                    <tr key={client._id} className="align-middle">
+                      {/* <td>
+                        <img
+                          className="product-img"
+                          src={`http://localhost:3001/images/${client.image}`}
+                        />
+                      </td> */}
+                      <td>{client.firstname}</td>
+                      <td>{client.lastname}</td>
+                      <td>
+                        <div className="edit-delete-icons">
+                          <BiEdit />
+                          <RiDeleteBinLine />
+                        </div>
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>

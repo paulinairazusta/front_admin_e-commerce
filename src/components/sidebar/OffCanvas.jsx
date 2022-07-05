@@ -1,12 +1,10 @@
 import { logout } from "../../redux/adminSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
-import {
-  AiOutlineUser,
-} from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import { BiCategoryAlt, BiMenuAltLeft } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
 import { GoSettings } from "react-icons/go";
@@ -19,32 +17,30 @@ import "./offcanvas.css";
 function OffCanvas({ name, show, setShow, ...props }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const admin = useSelector((state) => state.admin);
 
-  // const [hide, setHide] = useState(true);
-
-  const handleClose = () => {
-    setShow(false);
-  };
   const toggleShow = () => {
     setShow((s) => !s);
-    // setHide(!hide);
   };
   return (
     <>
       <div className="admin-nav">
-        <button onClick={toggleShow} >
-          {<BiMenuAltLeft />}
-        </button>
+        <button onClick={toggleShow}>{<BiMenuAltLeft />}</button>
         <div className="admin-nav-user-info">
-          <img src="https://static.vecteezy.com/system/resources/previews/001/993/889/non_2x/beautiful-latin-woman-avatar-character-icon-free-vector.jpg" alt="" />
-          <span>Admin</span>
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/001/993/889/non_2x/beautiful-latin-woman-avatar-character-icon-free-vector.jpg"
+            alt=""
+          />
+          <span>
+            {admin.admin.firstname} {admin.admin.lastname}
+          </span>
         </div>
       </div>
 
       <Offcanvas
         className="side-menu"
         show={show}
-        onHide={handleClose}
+        onHide={toggleShow}
         name="Enable body scrolling"
         scroll
         backdrop={false}
