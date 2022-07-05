@@ -11,9 +11,18 @@ function Clients() {
   const [clients, setClients] = useState([]);
   const [showMenu, setShowMenu] = useState(true);
 
+  const config = {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+    },
+  };
+
   useEffect(() => {
     async function getClients() {
-      const response = await Axios.get("http://localhost:3001/api/users");
+      const response = await Axios.get(
+        `${process.env.REACT_APP_API_URL}/api/users`,
+        config
+      );
       setClients(response.data);
     }
     getClients();
@@ -32,7 +41,7 @@ function Clients() {
             <Table hover>
               <thead>
                 <tr>
-                  {/* <th></th> */}
+                  <th></th>
                   <th>FIRST NAME</th>
                   <th>LAST NAME</th>
                   <th>ACTIONS</th>
@@ -42,12 +51,15 @@ function Clients() {
                 {clients.map((client) => {
                   return (
                     <tr key={client._id} className="align-middle">
-                      {/* <td>
+                      <td>
                         <img
                           className="product-img"
-                          src={`http://localhost:3001/images/${client.image}`}
+                          src={
+                            (`${process.env.REACT_APP_API_URL}/images/${client.image}`,
+                            config)
+                          }
                         />
-                      </td> */}
+                      </td>
                       <td>{client.firstname}</td>
                       <td>{client.lastname}</td>
                       <td>
@@ -64,16 +76,6 @@ function Clients() {
           </div>
         </div>
       </div>
-
-      {/* {clients.map((client) => {
-        return (
-          <ul className="list-unstyled" key={client._id}>
-            <li>
-              {client.firstname} {client.lastname}
-            </li>
-          </ul>
-        );
-      })} */}
     </>
   );
 }

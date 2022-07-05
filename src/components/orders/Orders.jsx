@@ -10,9 +10,18 @@ function Orders() {
   const [currentOrder, setCurrentOrder] = useState(false);
   const [showMenu, setShowMenu] = useState(true);
 
+  const config = {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+    },
+  };
+
   useEffect(() => {
     async function getOrders() {
-      const response = await Axios.get("http://localhost:3001/api/orders");
+      const response = await Axios.get(
+        `${process.env.REACT_APP_API_URL}/api/orders`,
+        config
+      );
       setOrders(response.data);
     }
     getOrders();

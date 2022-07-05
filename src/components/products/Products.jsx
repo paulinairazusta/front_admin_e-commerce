@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 import "./products.css";
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
-import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -16,13 +14,22 @@ function Products() {
 
   const toggleProductHandler = async (productId) => {
     const response = await Axios.delete(
-      `http://localhost:3001/api/products/${productId}`
+      `${process.env.REACT_APP_API_URL}/${productId}`
     );
+  };
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+    },
   };
 
   useEffect(() => {
     async function getProducts() {
-      const response = await Axios.get("http://localhost:3001/api/products");
+      const response = await Axios.get(
+        `${process.env.REACT_APP_API_URL}/api/products`,
+        config
+      );
       setProducts(response.data);
     }
     getProducts();
@@ -58,7 +65,10 @@ function Products() {
                       <td>
                         <img
                           className="product-img"
-                          src={`http://localhost:3001/images/${product.image}`}
+                          src={
+                            (`${process.env.REACT_APP_API_URL}/images/${product.image}`,
+                            config)
+                          }
                           alt="product"
                         />
                       </td>

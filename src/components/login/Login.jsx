@@ -11,13 +11,23 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const config = {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+    },
+  };
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
-    const response = await Axios.post("http://localhost:3001/admin/login", {
-      email: { email },
-      password: { password },
-    });
+    const response = await Axios.post(
+      `${process.env.REACT_APP_API_URL}/admin/login`,
+      {
+        email: { email },
+        password: { password },
+      },
+      config
+    );
     dispatch(storeAdminInfo({ adminInfo: response.data }));
     setEmail("");
     setPassword("");

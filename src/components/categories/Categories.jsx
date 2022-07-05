@@ -10,13 +10,21 @@ import { BiEdit } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 function Categories() {
+  const config = {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+    },
+  };
   const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
   const [showMenu, setShowMenu] = useState(true);
 
   useEffect(() => {
     async function getCategories() {
-      const response = await Axios.get(`http://localhost:3001/api/categories`);
+      const response = await Axios.get(
+        `${process.env.REACT_APP_API_URL}/api/categories`,
+        config
+      );
       setCategories(response.data);
     }
     getCategories();
@@ -24,9 +32,13 @@ function Categories() {
 
   async function handleCreate(event) {
     // event.preventDefault(); Se lo comenté porque creo que en este caso sí conviene que recargue la página así cuando se recarga ya aparece la categoría nueva. Si no, no aparece y hay que recargar a mano.
-    await Axios.post("http://localhost:3001/create/category", {
-      name: categoryName,
-    });
+    await Axios.post(
+      `${process.env.REACT_APP_API_URL}/create/category`,
+      {
+        name: categoryName,
+      },
+      config
+    );
   }
 
   return (
@@ -74,15 +86,6 @@ function Categories() {
           </Table>
         </div>
       </div>
-      {/* </div> */}
-
-      {/* {categories.map((category) => {
-        return (
-          <ul className="list-unstyled" key={category._id}>
-            <li>{category.name}</li>
-          </ul>
-        );
-      })} */}
     </div>
   );
 }

@@ -13,9 +13,18 @@ function Admins() {
   const [showMenu, setShowMenu] = useState(true);
   const [admins, setAdmins] = useState([]);
 
+  const config = {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+    },
+  };
+
   useEffect(() => {
     async function getAdmins() {
-      const response = await Axios.get("//localhost:3001/api/admins");
+      const response = await Axios.get(
+        `${process.env.REACT_APP_API_URL}/api/admins`,
+        config
+      );
       setAdmins(response.data);
     }
 
@@ -36,6 +45,7 @@ function Admins() {
             <Table hover>
               <thead>
                 <tr>
+                  <th></th>
                   <th>FIRST NAME</th>
                   <th>LAST NAME</th>
                   <th>ACTIONS</th>
@@ -45,6 +55,15 @@ function Admins() {
                 {admins.map((admin) => {
                   return (
                     <tr key={admin._id} className="align-middle">
+                      <td>
+                        <img
+                          src={
+                            (`${process.env.REACT_APP_API_URL}/images/${admin.image}`,
+                            config)
+                          }
+                          className="product-img"
+                        />
+                      </td>
                       <td>{admin.firstname}</td>
                       <td>{admin.lastname}</td>
                       <td>
@@ -61,15 +80,6 @@ function Admins() {
           </div>
         </div>
       </div>
-      {/* {admins.map((admin) => {
-        return (
-          <ul key={admin._id}>
-            <li>
-              {admin.firstname} {admin.lastname}
-            </li>
-          </ul>
-        );
-      })} */}
     </>
   );
 }
