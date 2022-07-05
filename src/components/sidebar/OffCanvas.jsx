@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { logout } from "../../redux/adminSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -16,19 +15,18 @@ import { HiUsers } from "react-icons/hi";
 import { RiBillLine, RiAdminLine } from "react-icons/ri";
 import "./offcanvas.css";
 
-function OffCanvas({ name, ...props }) {
+function OffCanvas({ name, show, setShow, ...props }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [show, setShow] = useState(true);
-  const [hide, setHide] = useState(true);
+  // const [hide, setHide] = useState(true);
 
   const handleClose = () => {
     setShow(false);
   };
   const toggleShow = () => {
     setShow((s) => !s);
-    setHide(!hide);
+    // setHide(!hide);
   };
 
   // function FollowFunctional() {
@@ -39,14 +37,17 @@ function OffCanvas({ name, ...props }) {
   return (
     <>
       <Button variant="light" onClick={toggleShow} className="me-2">
-        {hide ? <AiOutlineArrowLeft /> : <AiOutlineArrowRight />}
+        {show ? <AiOutlineArrowRight /> : <AiOutlineArrowLeft />}
       </Button>
 
       <Offcanvas
+        className="side-menu"
         show={show}
         onHide={handleClose}
+        name="Enable body scrolling"
+        scroll
+        backdrop={false}
         {...props}
-        className="side-menu"
       >
         <Offcanvas.Header closeButton className="side-menu">
           <Link to="/" className="link">
