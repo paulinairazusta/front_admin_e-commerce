@@ -9,7 +9,7 @@ function FormProducts() {
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState("");
 	const [stock, setStock] = useState(1);
-	const [image, setImage] = useState("");
+	const [image, setImage] = useState(null);
 	const [categoryList, setCategoryList] = useState([]);
 	const [category, setCategory] = useState("");
 

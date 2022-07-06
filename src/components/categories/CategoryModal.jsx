@@ -1,5 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import Axios from "axios";
 import "./categories.css";
 
@@ -7,12 +8,14 @@ function OrderModal({ show, setShow }) {
   const [categoryName, setCategoryName] = useState("");
 
   const handleClose = () => setShow(false);
+  const admin = useSelector((state) => state.admin);
 
   const config = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+      Authorization: "Bearer " + admin.token,
     },
   };
+
   async function handleCreate(event) {
     // event.preventDefault(); Se lo comenté porque creo que en este caso sí conviene que recargue la página así cuando se recarga ya aparece la categoría nueva. Si no, no aparece y hay que recargar a mano.
     await Axios.post(

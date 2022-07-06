@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import OrderModal from "./OrderModal";
 import "./orders.css";
 import OffCanvas from "../sidebar/OffCanvas";
@@ -10,9 +11,11 @@ function Orders() {
   const [currentOrder, setCurrentOrder] = useState(false);
   const [showMenu, setShowMenu] = useState(true);
 
+  const admin = useSelector((state) => state.admin);
+
   const config = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+      Authorization: "Bearer " + admin.token,
     },
   };
 
