@@ -3,6 +3,7 @@ import OffCanvas from "../sidebar/OffCanvas";
 
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./products.css";
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
@@ -14,13 +15,16 @@ function Products() {
 
   const toggleProductHandler = async (productId) => {
     const response = await Axios.delete(
-      `${process.env.REACT_APP_API_URL}/${productId}`
+      `${process.env.REACT_APP_API_URL}/${productId}`,
+      config
     );
   };
 
+  const admin = useSelector((state) => state.admin);
+
   const config = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+      Authorization: "Bearer " + admin.token,
     },
   };
 

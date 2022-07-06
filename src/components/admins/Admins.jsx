@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import { useSelector } from "react-redux";
 
 import "../products/products.css";
 import OffCanvas from "../sidebar/OffCanvas";
@@ -12,10 +13,11 @@ import { RiDeleteBinLine } from "react-icons/ri";
 function Admins() {
   const [showMenu, setShowMenu] = useState(true);
   const [admins, setAdmins] = useState([]);
+  const admin = useSelector((state) => state.admin);
 
   const config = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+      Authorization: "Bearer " + admin.token,
     },
   };
 

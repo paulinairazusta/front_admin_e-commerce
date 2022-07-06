@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import CategoryModal from "./CategoryModal";
 import "./categories.css";
+import { useSelector } from "react-redux";
 
 import "../products/products.css";
 import OffCanvas from "../sidebar/OffCanvas";
@@ -15,10 +16,11 @@ function Categories() {
   const [showMenu, setShowMenu] = useState(true);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
+  const admin = useSelector((state) => state.admin);
 
   const config = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+      Authorization: "Bearer " + admin.token,
     },
   };
 

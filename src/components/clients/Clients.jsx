@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import "../products/products.css";
 import OffCanvas from "../sidebar/OffCanvas";
+import { useSelector } from "react-redux";
 
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
@@ -11,9 +12,11 @@ function Clients() {
   const [clients, setClients] = useState([]);
   const [showMenu, setShowMenu] = useState(true);
 
+  const admin = useSelector((state) => state.admin);
+
   const config = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+      Authorization: "Bearer " + admin.token,
     },
   };
 

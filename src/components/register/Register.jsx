@@ -1,5 +1,6 @@
 import { useState } from "react";
 import OffCanvas from "../sidebar/OffCanvas";
+import { useSelector } from "react-redux";
 
 import Axios from "axios";
 
@@ -11,9 +12,11 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const admin = useSelector((state) => state.admin);
+
   const config = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+      Authorization: "Bearer " + admin.token,
     },
   };
   const [showMenu, setShowMenu] = useState(true);

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Axios from "axios";
 import "../register/register.css";
 import { storeAdminInfo } from "../../redux/adminSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -11,9 +11,11 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const admin = useSelector((state) => state.admin);
+
   const config = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+      Authorization: "Bearer " + admin.token,
     },
   };
 

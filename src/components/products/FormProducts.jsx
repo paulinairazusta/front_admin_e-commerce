@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "../register/register.css";
 
 function FormProducts() {
@@ -12,16 +13,20 @@ function FormProducts() {
   const [categoryList, setCategoryList] = useState([]);
   const [category, setCategory] = useState("");
 
+  const admin = useSelector((state) => state.admin);
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + admin.token,
+    },
+  };
+
   useEffect(() => {
     const getCategories = async () => {
       try {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/api/categories`,
-          {
-            headers: {
-              Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
-            },
-          }
+          config
         );
         setCategoryList(response.data);
       } catch (error) {
@@ -45,11 +50,10 @@ function FormProducts() {
       {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+          Authorization: "Bearer " + admin.token,
         },
       }
     );
-    console.log(response.data);
   };
   return (
     <div className="register-container">
