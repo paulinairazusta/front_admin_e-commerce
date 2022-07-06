@@ -65,10 +65,7 @@ function Products() {
                       <td>
                         <img
                           className="product-img"
-                          src={
-                            (`${process.env.REACT_APP_API_URL}/images/${product.image}`,
-                            config)
-                          }
+                          src={`https://tkyarzymrutnhhccfvhu.supabase.co/storage/v1/object/public/${product.image}`}
                           alt="product"
                         />
                       </td>
