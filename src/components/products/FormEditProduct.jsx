@@ -1,71 +1,44 @@
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import "./products.css";
+import { useSelector } from "react-redux";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../register/register.css";
 
-function FormProducts() {
+function FormEditProduct() {
+	const params = useParams();
 	const navigate = useNavigate();
-	const [name, setName] = useState("");
-	const [description, setDescription] = useState("");
-	const [price, setPrice] = useState("");
-	const [stock, setStock] = useState(1);
-	const [image, setImage] = useState("");
-	const [categoryList, setCategoryList] = useState([]);
-	const [category, setCategory] = useState("");
+	const products = useSelector((state) => state.product);
+	console.log(products);
+	// const [name, setName] = useState(product.name);
+	// const [description, setDescription] = useState(product.description);
+	// const [price, setPrice] = useState(product.price);
+	// const [stock, setStock] = useState(product.stock);
+	// const [category, setCategory] = useState(product.category);
+	// const [image, setImage] = useState("");
 
-	useEffect(() => {
-		const getCategories = async () => {
-			try {
-				const response = await axios.get(
-					`${process.env.REACT_APP_API_URL}/api/categories`,
-					{
-						headers: {
-							Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
-						},
-					}
-				);
-				setCategoryList(response.data);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		getCategories();
-	}, []);
-
-	const createProductHandler = async () => {
-		const response = await axios.post(
-			`${process.env.REACT_APP_API_URL}/api/product`,
-			{
-				name,
-				description,
-				price,
-				stock,
-				image,
-				category,
-			},
-
-			{
-				headers: {
-					"Content-Type": "multipart/form-data",
-					Authorization: "Bearer " + process.env.REACT_APP_ADMIN_TOKEN,
-				},
-			}
-		);
-		console.log(response.data);
-	};
+	// const editProductHandler = async () => {
+	// 	await axios.patch("http://localhost:3001/api/product", {
+	// 		id: product._id,
+	// 		name,
+	// 		description,
+	// 		price,
+	// 		stock,
+	// 		image,
+	// 	});
+	// };
 	return (
 		<div className='register-container'>
-			<div>
-				<h2>New product</h2>
+			{/* <div>
+				<h2>Edit product</h2>
 				<form
 					id='productform'
 					className='register-card'
 					onSubmit={(event) => {
 						event.preventDefault();
-						createProductHandler();
+						editProductHandler();
 						navigate("/products");
 					}}>
-					<label className='label' htmlFor=''>
+					<label className='label' htmlFor='name'>
 						Product Name
 					</label>
 					<input
@@ -73,16 +46,16 @@ function FormProducts() {
 						value={name}
 						onChange={(event) => setName(event.target.value)}
 						type='text'
-						id=''
+						id='name'
 					/>
-					<label className='label' htmlFor=''>
+					<label className='label' htmlFor='description'>
 						Description
 					</label>
 					<textarea
 						className='input'
 						value={description}
 						onChange={(event) => setDescription(event.target.value)}
-						id=''
+						id='description'
 						cols='30'
 						rows='10'></textarea>
 					<label className='label' htmlFor=''>
@@ -128,11 +101,11 @@ function FormProducts() {
 							);
 						})}
 					</select>
-					<button className='button-submit'>Add a product</button>
+					<button className='button-submit'>Save</button>
 				</form>
-			</div>
+			</div> */}
 		</div>
 	);
 }
 
-export default FormProducts;
+export default FormEditProduct;
