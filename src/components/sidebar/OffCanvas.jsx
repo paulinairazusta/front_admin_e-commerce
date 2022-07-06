@@ -61,11 +61,6 @@ function OffCanvas({ name, show, setShow, ...props }) {
                 <GoSettings /> Dashboard
               </Link>
             </li>
-            <li>
-              <Link to="/profile" className="link">
-                <AiOutlineUser /> Profile
-              </Link>
-            </li>
 
             {/* <li>
               <Link to="/login" className="link">
