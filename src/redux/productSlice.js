@@ -5,11 +5,7 @@ const productSlice = createSlice({
 	initialState: [],
 	reducers: {
 		storeProduct(state, action) {
-			state.push(
-				action.payload.products.map((product) => {
-					return product;
-				})
-			);
+			return (state = action.payload);
 		},
 	},
 });

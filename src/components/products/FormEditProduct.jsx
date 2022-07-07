@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./products.css";
 import { useSelector } from "react-redux";
@@ -7,28 +7,52 @@ import axios from "axios";
 function FormEditProduct() {
 	const params = useParams();
 	const navigate = useNavigate();
-	const products = useSelector((state) => state.product);
-	console.log(products);
-	// const [name, setName] = useState(product.name);
-	// const [description, setDescription] = useState(product.description);
-	// const [price, setPrice] = useState(product.price);
-	// const [stock, setStock] = useState(product.stock);
-	// const [category, setCategory] = useState(product.category);
-	// const [image, setImage] = useState("");
+	const product = useSelector((state) =>
+		state.product.find((item) => item._id === params.id)
+	);
+	const admin = useSelector((state) => state.admin);
+	const [name, setName] = useState(product.name);
+	const [description, setDescription] = useState(product.description);
+	const [price, setPrice] = useState(product.price);
+	const [stock, setStock] = useState(product.stock);
+	const [featured, setFeatured] = useState(false);
+	const [categoryList, setCategoryList] = useState([]);
+	const [category, setCategory] = useState("");
+	const [image, setImage] = useState("");
 
-	// const editProductHandler = async () => {
-	// 	await axios.patch("http://localhost:3001/api/product", {
-	// 		id: product._id,
-	// 		name,
-	// 		description,
-	// 		price,
-	// 		stock,
-	// 		image,
-	// 	});
-	// };
+	const editProductHandler = async () => {
+		await axios.patch("http://localhost:3001/api/product", {
+			id: product._id,
+			name,
+			description,
+			featured,
+			price,
+			stock,
+			image,
+			category,
+		});
+	};
+	useEffect(() => {
+		const getCategories = async () => {
+			try {
+				const response = await axios.get(
+					`${process.env.REACT_APP_API_URL}/api/categories`,
+					{
+						headers: {
+							Authorization: "Bearer " + admin.token,
+						},
+					}
+				);
+				setCategoryList(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		getCategories();
+	}, []);
 	return (
-		<div className='register-container'>
-			{/* <div>
+		<div className='register-container mt-5'>
+			<div>
 				<h2>Edit product</h2>
 				<form
 					id='productform'
@@ -77,6 +101,18 @@ function FormEditProduct() {
 						onChange={(event) => setStock(event.target.value)}
 						value={stock}
 					/>
+					<label className='label' htmlFor='featured'>
+						Featured
+					</label>
+					<select
+						id='featured'
+						onChange={(e) => {
+							setFeatured(e.target.value);
+						}}>
+						<option value='false'>Choose</option>
+						<option value='true'>True</option>
+						<option value='false'>False</option>
+					</select>
 					<label className='label' htmlFor=''>
 						Product Image
 					</label>
@@ -93,6 +129,7 @@ function FormEditProduct() {
 						onChange={(e) => {
 							setCategory(e.target.value);
 						}}>
+						<option value=''>Choose</option>
 						{categoryList.map((category) => {
 							return (
 								<option key={category._id} value={category._id}>
@@ -103,7 +140,7 @@ function FormEditProduct() {
 					</select>
 					<button className='button-submit'>Save</button>
 				</form>
-			</div> */}
+			</div>
 		</div>
 	);
 }

@@ -1,5 +1,7 @@
 import "./App.css";
-
+import Axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import OffCanvas from "./components/sidebar/OffCanvas";
 import Register from "./components/register/Register";
@@ -13,8 +15,28 @@ import Admins from "./components/admins/Admins";
 import FormProducts from "./components/products/FormProducts";
 import ProtectedRoute from "./components/ProtectedRoute";
 import FormEditProduct from "./components/products/FormEditProduct";
+import { storeProduct } from "./redux/productSlice";
+import { useSelector } from "react-redux";
 
 function App() {
+	const admin = useSelector((state) => state.admin);
+	const dispatch = useDispatch();
+	const config = {
+		headers: {
+			Authorization: "Bearer " + admin.token,
+		},
+	};
+	useEffect(() => {
+		async function getProducts() {
+			const response = await Axios.get(
+				`${process.env.REACT_APP_API_URL}/api/products`,
+				config
+			);
+			dispatch(storeProduct(response.data));
+		}
+
+		getProducts();
+	}, []);
 	return (
 		<div className='App'>
 			<Routes>
@@ -26,7 +48,6 @@ function App() {
 						</ProtectedRoute>
 					}
 				/>
-				{/* <Route path="profile" element={<></>} /> */}
 				<Route
 					path='register'
 					element={
