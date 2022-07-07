@@ -21,7 +21,7 @@ function FormProducts() {
     const getCategories = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/categories`,
+          `${process.env.REACT_APP_API_URL}/api/category`,
           {
             headers: {
               Authorization: "Bearer " + admin.token,
