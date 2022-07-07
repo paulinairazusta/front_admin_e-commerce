@@ -19,18 +19,22 @@ function FormEditProduct() {
 	const [categoryList, setCategoryList] = useState([]);
 	const [category, setCategory] = useState("");
 	const [image, setImage] = useState("");
-
+	const config = { headers: { "Content-Type": "multipart/form-data" } };
 	const editProductHandler = async () => {
-		await axios.patch("http://localhost:3001/api/product", {
-			id: product._id,
-			name,
-			description,
-			featured,
-			price,
-			stock,
-			image,
-			category,
-		});
+		await axios.patch(
+			"http://localhost:3001/api/product",
+			{
+				id: product._id,
+				name,
+				description,
+				featured,
+				price,
+				stock,
+				image,
+				category,
+			},
+			config
+		);
 	};
 	useEffect(() => {
 		const getCategories = async () => {
@@ -120,6 +124,7 @@ function FormEditProduct() {
 						className='input'
 						onChange={(event) => setImage(event.target.files[0])}
 						type='file'
+						required
 					/>
 					<label className='label' htmlFor=''>
 						Product category
