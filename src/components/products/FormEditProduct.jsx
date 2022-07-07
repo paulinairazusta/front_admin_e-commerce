@@ -19,7 +19,12 @@ function FormEditProduct() {
   const [categoryList, setCategoryList] = useState([]);
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
-  const config = { headers: { "Content-Type": "multipart/form-data" } };
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: "Bearer " + admin.token,
+    },
+  };
   const editProductHandler = async () => {
     await axios.patch(
       "http://localhost:3001/api/product",
