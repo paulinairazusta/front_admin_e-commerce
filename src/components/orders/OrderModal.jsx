@@ -21,7 +21,7 @@ function OrderModal({ currentOrder, setCurrentOrder }) {
               Email: {currentOrder.user.email}
             </li>
             <li className="margin-left list-item">
-              Phone: {currentOrder.user.phone}
+              Phone: {currentOrder.user.tel}
             </li>
           </ul>
 
