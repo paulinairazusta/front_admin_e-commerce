@@ -53,7 +53,7 @@ function FormEditProduct() {
 			}
 		};
 		getCategories();
-	}, []);
+	}, [admin.token]);
 	return (
 		<div className='register-container mt-5'>
 			<div>
