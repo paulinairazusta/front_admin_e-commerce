@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Axios from "axios";
 import "./categories.css";
 
-function OrderModal({ show, setShow }) {
+function OrderModal({ show, setShow, setCount }) {
   const [categoryName, setCategoryName] = useState("");
 
   const handleClose = () => setShow(false);
@@ -17,7 +17,7 @@ function OrderModal({ show, setShow }) {
   };
 
   async function handleCreate(event) {
-    // event.preventDefault(); Se lo comenté porque creo que en este caso sí conviene que recargue la página así cuando se recarga ya aparece la categoría nueva. Si no, no aparece y hay que recargar a mano.
+    event.preventDefault();
     await Axios.post(
       `${process.env.REACT_APP_API_URL}/api/category`,
       {
@@ -25,11 +25,14 @@ function OrderModal({ show, setShow }) {
       },
       config
     );
+    setCount((prev) => prev + 1);
   }
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Create category</Modal.Title>
+        <Modal.Title className="modal-category-title">
+          Create category
+        </Modal.Title>
       </Modal.Header>
       <form action="" onSubmit={handleCreate}>
         <Modal.Body className="category-modal">

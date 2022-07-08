@@ -1,3 +1,7 @@
+.modal-title {
+  margin-left: 0 !important;
+}
+
 .category-modal {
   display: flex;
   justify-content: center;

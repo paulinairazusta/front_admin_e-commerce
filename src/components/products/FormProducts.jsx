@@ -56,7 +56,6 @@ function FormProducts() {
         },
       }
     );
-    console.log(response.data);
   };
   return (
     <div className="register-container form-product">
