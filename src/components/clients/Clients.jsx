@@ -7,10 +7,12 @@ import { useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Clients() {
   const [clients, setClients] = useState([]);
   const [showMenu, setShowMenu] = useState(true);
+  const [count, setCount] = useState(0);
 
   const admin = useSelector((state) => state.admin);
 
@@ -29,7 +31,15 @@ function Clients() {
       setClients(response.data);
     }
     getClients();
-  }, []);
+  }, [count]);
+
+  async function deleteUser(userId) {
+    await Axios.delete(
+      `${process.env.REACT_APP_API_URL}/api/user/${userId}`,
+      config
+    );
+    setCount((prev) => prev + 1);
+  }
 
   return (
     <>
@@ -68,7 +78,14 @@ function Clients() {
                       <td>
                         <div className="edit-delete-icons">
                           <BiEdit />
-                          <RiDeleteBinLine />
+                          <div
+                            className="p-1"
+                            onClick={() => {
+                              deleteUser(client._id);
+                            }}
+                          >
+                            <RiDeleteBinLine />
+                          </div>
                         </div>
                       </td>
                     </tr>
