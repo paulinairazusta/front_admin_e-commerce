@@ -61,15 +61,15 @@ function Admins() {
 								{admins.map((admin) => {
 									return (
 										<tr key={admin._id} className='align-middle'>
-											{/* <td>
-                        <img
+											<td>
+                        {/* <img
                           src={
                             (`${process.env.REACT_APP_API_URL}/images/${admin.image}`,
                             config)
                           }
                           className="profile"
-                        />
-                      </td> */}
+                        /> */}
+                      </td>
 											<td>{admin.firstname}</td>
 											<td>{admin.lastname}</td>
 											<td>
