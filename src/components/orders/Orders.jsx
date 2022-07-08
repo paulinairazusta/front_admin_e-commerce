@@ -49,21 +49,23 @@ function Orders() {
             <tbody>
               {orders.map((order) => {
                 return (
-                  <tr
-                    key={order._id}
-                    className="align-middle order"
-                    onClick={() => setCurrentOrder(order)}
-                  >
-                    <td>{order._id}</td>
-                    <td>{order.date}</td>
-                    <td>
-                      {order.user.firstname} {order.user.lastname}
-                    </td>
-                    <td>{order.user.address}</td>
+                  order.user && (
+                    <tr
+                      key={order._id}
+                      className="align-middle order"
+                      onClick={() => setCurrentOrder(order)}
+                    >
+                      <td>{order._id}</td>
+                      <td>{order.date}</td>
+                      <td>
+                        {order.user.firstname} {order.user.lastname}
+                      </td>
+                      <td>{order.user.address}</td>
 
-                    <td>{order.status}</td>
-                    <td>${order.totalPrice}</td>
-                  </tr>
+                      <td>{order.status}</td>
+                      <td>${order.totalPrice}</td>
+                    </tr>
+                  )
                 );
               })}
             </tbody>
