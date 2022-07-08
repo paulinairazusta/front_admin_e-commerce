@@ -20,6 +20,7 @@ function FormEditProduct() {
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
 
+  console.log(process.env.REACT_APP_API_URL);
   const config = {
     headers: {
       "Content-Type": "multipart/form-data",
@@ -28,7 +29,7 @@ function FormEditProduct() {
   };
   const editProductHandler = async () => {
     await axios.patch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/product`,
+      `${process.env.REACT_APP_API_URL}/api/product`,
       {
         id: product._id,
         name,
