@@ -1,21 +1,39 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import OffCanvas from "../sidebar/OffCanvas";
-import { useDispatch } from "react-redux";
-
 import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./products.css";
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
+import { storeProduct } from "../../redux/productSlice";
+import { useDispatch } from "react-redux";
 
 function Products() {
 	const [checked, setChecked] = useState(true);
 	const [showMenu, setShowMenu] = useState(true);
-	const dispatch = useDispatch();
+	const [refresh, setRefresh] = useState(null);
 	const navigate = useNavigate();
-
 	const products = useSelector((state) => state.product);
+	const admin = useSelector((state) => state.admin);
+	const dispatch = useDispatch();
+	const config = {
+		headers: {
+			Authorization: "Bearer " + admin.token,
+		},
+	};
+	useEffect(() => {
+		async function getProducts() {
+			const response = await Axios.get(
+				`${process.env.REACT_APP_API_URL}/api/products`,
+				config
+			);
+			dispatch(storeProduct(response.data));
+			setRefresh(response.data);
+		}
+
+		getProducts();
+	}, [refresh, dispatch]);
 
 	return (
 		<>
