@@ -1,12 +1,12 @@
 import { useState } from "react";
 import OffCanvas from "../sidebar/OffCanvas";
 import { useSelector } from "react-redux";
-
 import Axios from "axios";
-
 import "./register.css";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+	const navigate = useNavigate();
 	const [firstname, setFirstname] = useState("");
 	const [lastname, setLastname] = useState("");
 	const [email, setEmail] = useState("");
@@ -34,6 +34,7 @@ function Register() {
 			},
 			config
 		);
+		navigate("/admins");
 	};
 	return (
 		<>
@@ -52,6 +53,7 @@ function Register() {
 							value={firstname}
 							onChange={(event) => setFirstname(event.target.value)}
 							placeholder='Jane'
+							minLength={3}
 							required
 						/>
 						<label className='label' htmlFor=''>
@@ -63,6 +65,7 @@ function Register() {
 							value={lastname}
 							onChange={(event) => setLastname(event.target.value)}
 							placeholder='Doe'
+							minLength={4}
 							required
 						/>
 
@@ -75,6 +78,7 @@ function Register() {
 							value={email}
 							onChange={(event) => setEmail(event.target.value)}
 							placeholder='example@example.com'
+							minLength={4}
 							required
 						/>
 						<label className='label' htmlFor=''>
@@ -86,6 +90,7 @@ function Register() {
 							value={password}
 							onChange={(event) => setPassword(event.target.value)}
 							placeholder='Password'
+							minLength={8}
 							required
 						/>
 						<button className='button-submit' type='submit'>

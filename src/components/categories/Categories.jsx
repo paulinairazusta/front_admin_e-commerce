@@ -3,16 +3,15 @@ import Axios from "axios";
 import CategoryModal from "./CategoryModal";
 import "./categories.css";
 import { useSelector } from "react-redux";
-
 import "../products/products.css";
 import OffCanvas from "../sidebar/OffCanvas";
-
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 function Categories() {
 	const [categories, setCategories] = useState([]);
+	const [count, setCount] = useState(0);
 	const [showMenu, setShowMenu] = useState(true);
 	const [show, setShow] = useState(false);
 	const handleShow = () => setShow(true);
@@ -23,7 +22,21 @@ function Categories() {
 			Authorization: "Bearer " + admin.token,
 		},
 	};
-
+	const deleteCategory = async (categoryId) => {
+		await Axios.delete(
+			`${process.env.REACT_APP_API_URL}/api/category/${categoryId}`,
+			config
+		);
+		setCount((prev) => prev + 1);
+	};
+	//TODO: Agregar un input para cambiar el nombre de la categoria.
+	const editCategory = async (categoryId) => {
+		await Axios.patch(
+			`${process.env.REACT_APP_API_URL}/api/category/${categoryId}`,
+			config
+		);
+		setCount((prev) => prev + 1);
+	};
 	useEffect(() => {
 		async function getCategories() {
 			const response = await Axios.get(
@@ -33,7 +46,7 @@ function Categories() {
 			setCategories(response.data);
 		}
 		getCategories();
-	}, []);
+	}, [count]);
 
 	return (
 		<div className={`content${showMenu ? " with-margin" : ""}`}>
@@ -60,11 +73,21 @@ function Categories() {
 								return (
 									<tr key={category._id} className='align-middle'>
 										<td>{category._id}</td>
+
 										<td>{category.name}</td>
+
 										<td>
 											<div className='edit-delete-icons'>
-												<BiEdit />
-												<RiDeleteBinLine />
+												<BiEdit
+													onClick={() => {
+														// editCategory(category._id);
+													}}
+												/>
+												<RiDeleteBinLine
+													onClick={() => {
+														deleteCategory(category._id);
+													}}
+												/>
 											</div>
 										</td>
 									</tr>
