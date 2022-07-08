@@ -80,6 +80,7 @@ function FormProducts() {
             onChange={(event) => setName(event.target.value)}
             type="text"
             id=""
+            required
           />
           <label className="label" htmlFor="">
             Description
@@ -91,6 +92,7 @@ function FormProducts() {
             id=""
             cols="30"
             rows="10"
+            required
           ></textarea>
           <label className="label" htmlFor="">
             Price
@@ -99,7 +101,8 @@ function FormProducts() {
             className="input"
             value={price}
             onChange={(event) => setPrice(event.target.value)}
-            type="tel"
+            type="number"
+            required
           />
           <label className="label" htmlFor="stock">
             Product Stock
@@ -110,6 +113,7 @@ function FormProducts() {
             id="stock"
             onChange={(event) => setStock(event.target.value)}
             value={stock}
+            required
           />
           <label htmlFor="featured">Featured</label>
           <select
@@ -117,8 +121,9 @@ function FormProducts() {
             onChange={(e) => {
               setFeatured(e.target.value);
             }}
+            required
           >
-            <option value="false">Choose</option>
+            <option value="">Choose</option>
             <option value="false">False</option>
             <option value="true">True</option>True
           </select>
@@ -129,6 +134,7 @@ function FormProducts() {
             className="input"
             onChange={(event) => setImage(event.target.files[0])}
             type="file"
+            required
           />
           <label className="label" htmlFor="">
             Product category
@@ -138,6 +144,7 @@ function FormProducts() {
             onChange={(e) => {
               setCategory(e.target.value);
             }}
+            required
           >
             <option value="">Choose</option>
             {categoryList.map((category) => {

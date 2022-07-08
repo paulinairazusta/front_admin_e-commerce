@@ -52,6 +52,7 @@ function Register() {
               value={firstname}
               onChange={(event) => setFirstname(event.target.value)}
               placeholder="Jane"
+              required
             />
             <label className="label" htmlFor="">
               Last Name
@@ -62,6 +63,7 @@ function Register() {
               value={lastname}
               onChange={(event) => setLastname(event.target.value)}
               placeholder="Doe"
+              required
             />
 
             <label className="label" htmlFor="">
@@ -73,6 +75,7 @@ function Register() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="example@example.com"
+              required
             />
             <label className="label" htmlFor="">
               Password
@@ -83,6 +86,7 @@ function Register() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="Password"
+              required
             />
             <button className="button-submit" type="submit">
               Register

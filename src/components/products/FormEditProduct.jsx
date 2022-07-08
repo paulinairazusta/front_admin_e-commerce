@@ -15,7 +15,7 @@ function FormEditProduct() {
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState(product.price);
   const [stock, setStock] = useState(product.stock);
-  const [featured, setFeatured] = useState(false);
+  const [featured, setFeatured] = useState(null);
   const [categoryList, setCategoryList] = useState([]);
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
@@ -83,6 +83,7 @@ function FormEditProduct() {
             onChange={(event) => setName(event.target.value)}
             type="text"
             id="name"
+            required
           />
           <label className="label" htmlFor="description">
             Description
@@ -94,6 +95,7 @@ function FormEditProduct() {
             id="description"
             cols="30"
             rows="10"
+            required
           ></textarea>
           <label className="label" htmlFor="">
             Price
@@ -103,6 +105,7 @@ function FormEditProduct() {
             value={price}
             onChange={(event) => setPrice(event.target.value)}
             type="tel"
+            required
           />
           <label className="label" htmlFor="stock">
             Product Stock
@@ -113,6 +116,7 @@ function FormEditProduct() {
             id="stock"
             onChange={(event) => setStock(event.target.value)}
             value={stock}
+            required
           />
           <label className="label" htmlFor="featured">
             Featured
@@ -122,8 +126,9 @@ function FormEditProduct() {
             onChange={(e) => {
               setFeatured(e.target.value);
             }}
+            required
           >
-            <option value="false">Choose</option>
+            <option value="">Choose</option>
             <option value="true">True</option>
             <option value="false">False</option>
           </select>
@@ -144,6 +149,7 @@ function FormEditProduct() {
             onChange={(e) => {
               setCategory(e.target.value);
             }}
+            required
           >
             <option value="">Choose</option>
             {categoryList.map((category) => {
